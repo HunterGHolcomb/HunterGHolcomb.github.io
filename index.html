@@ -377,30 +377,15 @@
       color: rgba(255, 255, 255, 0.62);
       overflow: hidden;
       position: relative;
-      font: inherit;
-      text-align: left;
-      cursor: pointer;
-      transition: 0.25s ease;
+      transition: 0.2s ease;
     }
 
     .step-tab::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(199, 163, 74, 0.25), rgba(255, 255, 255, 0));
+      background: linear-gradient(135deg, rgba(199, 163, 74, 0.22), rgba(255, 255, 255, 0));
       opacity: 0;
-      transition: 0.25s ease;
-    }
-
-    .step-tab.is-active {
-      color: var(--white);
-      border-color: rgba(199, 163, 74, 0.62);
-      background: rgba(199, 163, 74, 0.12);
-      transform: translateY(-2px);
-    }
-
-    .step-tab.is-active::before {
-      opacity: 1;
     }
 
     .step-tab span {
@@ -424,6 +409,15 @@
       z-index: 1;
     }
 
+    .step-tab:nth-child(1) { animation: tabOne 12s linear infinite; }
+    .step-tab:nth-child(2) { animation: tabTwo 12s linear infinite; }
+    .step-tab:nth-child(3) { animation: tabThree 12s linear infinite; }
+    .step-tab:nth-child(4) { animation: tabFour 12s linear infinite; }
+    .step-tab:nth-child(1)::before { animation: tabGlowOne 12s linear infinite; }
+    .step-tab:nth-child(2)::before { animation: tabGlowTwo 12s linear infinite; }
+    .step-tab:nth-child(3)::before { animation: tabGlowThree 12s linear infinite; }
+    .step-tab:nth-child(4)::before { animation: tabGlowFour 12s linear infinite; }
+
     .scene-stack {
       position: relative;
       z-index: 2;
@@ -438,18 +432,8 @@
       border: 1px solid rgba(255, 255, 255, 0.09);
       padding: 18px;
       opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
       transform: translateY(12px) scale(0.985);
       overflow: hidden;
-      transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease;
-    }
-
-    .demo-scene.is-active {
-      opacity: 1;
-      visibility: visible;
-      pointer-events: auto;
-      transform: translateY(0) scale(1);
     }
 
     .demo-scene h3 {
@@ -466,6 +450,11 @@
       max-width: 360px;
       margin-bottom: 16px;
     }
+
+    .demo-scene:nth-child(1) { animation: sceneOne 12s linear infinite; }
+    .demo-scene:nth-child(2) { animation: sceneTwo 12s linear infinite; }
+    .demo-scene:nth-child(3) { animation: sceneThree 12s linear infinite; }
+    .demo-scene:nth-child(4) { animation: sceneFour 12s linear infinite; }
 
     .ad-editor {
       display: grid;
@@ -553,10 +542,7 @@
       gap: 12px;
     }
 
-    .dash-card,
-    .text-thread,
-    .calendar-card,
-    .lead-card {
+    .dash-card {
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 18px;
@@ -591,8 +577,7 @@
       animation: launchButtonPulse 1.8s ease-in-out infinite;
     }
 
-    .lead-view,
-    .booked-view {
+    .lead-view {
       display: grid;
       grid-template-columns: 0.95fr 1.05fr;
       gap: 14px;
@@ -627,7 +612,10 @@
     }
 
     .lead-card {
-      border-color: rgba(199, 163, 74, 0.28);
+      background: rgba(247, 243, 234, 0.1);
+      border: 1px solid rgba(199, 163, 74, 0.28);
+      border-radius: 20px;
+      padding: 16px;
     }
 
     .lead-card small,
@@ -661,6 +649,21 @@
       gap: 12px;
       border-bottom: 1px solid rgba(255,255,255,0.08);
       padding-bottom: 7px;
+    }
+
+    .booked-view {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      align-items: stretch;
+    }
+
+    .text-thread,
+    .calendar-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 14px;
     }
 
     .reply {
@@ -706,19 +709,14 @@
       position: absolute;
       width: 22px;
       height: 22px;
-      left: 12%;
-      top: 67px;
+      left: 13%;
+      top: 66px;
       clip-path: polygon(0 0, 0 100%, 33% 72%, 52% 100%, 66% 93%, 48% 66%, 82% 66%);
       background: var(--white);
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.24);
+      animation: cursorTabs 12s linear infinite;
       z-index: 5;
-      transition: left 0.38s ease, top 0.38s ease;
     }
-
-    .campaign-stage.step-0 .auto-cursor { left: 12%; top: 67px; }
-    .campaign-stage.step-1 .auto-cursor { left: 36%; top: 67px; }
-    .campaign-stage.step-2 .auto-cursor { left: 60%; top: 67px; }
-    .campaign-stage.step-3 .auto-cursor { left: 84%; top: 67px; }
 
     .auto-cursor::after {
       content: "";
@@ -729,7 +727,7 @@
       top: -9px;
       border-radius: 50%;
       border: 1px solid rgba(199, 163, 74, 0.75);
-      animation: clickRing 2.6s ease-out infinite;
+      animation: clickRing 3s ease-out infinite;
     }
 
     .video-caption {
@@ -759,6 +757,76 @@
     @keyframes launchButtonPulse {
       0%, 100% { transform: translateY(0); box-shadow: 0 0 0 rgba(199, 163, 74, 0); }
       50% { transform: translateY(-2px); box-shadow: 0 0 0 8px rgba(199, 163, 74, 0.1); }
+    }
+
+    @keyframes sceneOne {
+      0%, 23% { opacity: 1; transform: translateY(0) scale(1); }
+      26%, 100% { opacity: 0; transform: translateY(12px) scale(0.985); }
+    }
+
+    @keyframes sceneTwo {
+      0%, 24% { opacity: 0; transform: translateY(12px) scale(0.985); }
+      27%, 48% { opacity: 1; transform: translateY(0) scale(1); }
+      51%, 100% { opacity: 0; transform: translateY(12px) scale(0.985); }
+    }
+
+    @keyframes sceneThree {
+      0%, 49% { opacity: 0; transform: translateY(12px) scale(0.985); }
+      52%, 73% { opacity: 1; transform: translateY(0) scale(1); }
+      76%, 100% { opacity: 0; transform: translateY(12px) scale(0.985); }
+    }
+
+    @keyframes sceneFour {
+      0%, 74% { opacity: 0; transform: translateY(12px) scale(0.985); }
+      77%, 100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes tabOne {
+      0%, 23% { color: var(--white); border-color: rgba(199, 163, 74, 0.62); background: rgba(199, 163, 74, 0.12); }
+      26%, 100% { color: rgba(255, 255, 255, 0.62); }
+    }
+
+    @keyframes tabTwo {
+      0%, 24%, 51%, 100% { color: rgba(255, 255, 255, 0.62); }
+      27%, 48% { color: var(--white); border-color: rgba(199, 163, 74, 0.62); background: rgba(199, 163, 74, 0.12); }
+    }
+
+    @keyframes tabThree {
+      0%, 49%, 76%, 100% { color: rgba(255, 255, 255, 0.62); }
+      52%, 73% { color: var(--white); border-color: rgba(199, 163, 74, 0.62); background: rgba(199, 163, 74, 0.12); }
+    }
+
+    @keyframes tabFour {
+      0%, 74% { color: rgba(255, 255, 255, 0.62); }
+      77%, 100% { color: var(--white); border-color: rgba(199, 163, 74, 0.62); background: rgba(199, 163, 74, 0.12); }
+    }
+
+    @keyframes tabGlowOne {
+      0%, 23% { opacity: 1; }
+      26%, 100% { opacity: 0; }
+    }
+
+    @keyframes tabGlowTwo {
+      0%, 24%, 51%, 100% { opacity: 0; }
+      27%, 48% { opacity: 1; }
+    }
+
+    @keyframes tabGlowThree {
+      0%, 49%, 76%, 100% { opacity: 0; }
+      52%, 73% { opacity: 1; }
+    }
+
+    @keyframes tabGlowFour {
+      0%, 74% { opacity: 0; }
+      77%, 100% { opacity: 1; }
+    }
+
+    @keyframes cursorTabs {
+      0%, 12% { left: 12%; top: 67px; opacity: 1; }
+      25%, 37% { left: 36%; top: 67px; opacity: 1; }
+      50%, 62% { left: 60%; top: 67px; opacity: 1; }
+      75%, 92% { left: 84%; top: 67px; opacity: 1; }
+      100% { left: 12%; top: 67px; opacity: 1; }
     }
 
     @keyframes clickRing {
@@ -1319,6 +1387,45 @@
       margin-bottom: 8px;
     }
 
+
+
+    .careers-section {
+      background: var(--cream-deep);
+    }
+
+    .careers-card {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: center;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      padding: 34px;
+      box-shadow: 0 18px 45px var(--shadow);
+    }
+
+    .careers-card p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-top: 10px;
+      max-width: 680px;
+    }
+
+    .careers-mini-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .careers-mini-list div {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px;
+      color: var(--charcoal);
+      font-weight: 800;
+    }
+
     .contact {
       background:
         radial-gradient(circle at 20% 20%, rgba(199, 163, 74, 0.24), transparent 32%),
@@ -1372,9 +1479,84 @@
     footer {
       background: var(--black);
       color: #9CA3AF;
-      padding: 30px 8%;
+      padding: 34px 8%;
       font-size: 0.9rem;
       border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 28px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .footer-copy {
+      max-width: 820px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .footer-links a {
+      color: var(--light-muted);
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
+    }
+
+
+    .footer-contact {
+      min-width: 250px;
+      display: grid;
+      gap: 8px;
+      color: var(--light-muted);
+    }
+
+    .footer-contact strong {
+      color: var(--white);
+      font-size: 0.95rem;
+    }
+
+    .footer-contact a,
+    .footer-contact span {
+      color: var(--light-muted);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .footer-contact a:hover {
+      color: var(--gold);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+
+    .social-links a {
+      color: var(--light-muted);
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    .social-links a:hover {
+      color: var(--gold);
+    }
+
+    .social-links a[aria-disabled="true"] {
+      opacity: 0.55;
+      cursor: default;
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1473,6 +1655,16 @@
         max-width: 430px;
       }
 
+      .careers-card {
+        grid-template-columns: 1fr;
+        padding: 28px;
+      }
+
+      .footer-inner,
+      .footer-links {
+        justify-content: flex-start;
+      }
+
       .contact-box {
         padding: 30px;
       }
@@ -1492,6 +1684,7 @@
       <a href="#ai-booking">Text-to-Book</a>
       <a href="#systems">Systems</a>
       <a href="#why">Why MarketWon</a>
+      <a href="#careers">Careers</a>
       <a class="nav-cta" href="#contact">Let’s Talk</a>
     </nav>
   </header>
@@ -1519,18 +1712,18 @@
               <div class="campaign-live">Auto demo</div>
             </div>
 
-            <div class="campaign-stage step-0">
+            <div class="campaign-stage">
               <div class="stage-grid"></div>
 
-              <div class="step-track" aria-label="MarketWon campaign process demo controls">
-                <button class="step-tab is-active" type="button" data-step="0"><span>01</span><strong>Create</strong></button>
-                <button class="step-tab" type="button" data-step="1"><span>02</span><strong>Launch</strong></button>
-                <button class="step-tab" type="button" data-step="2"><span>03</span><strong>Capture</strong></button>
-                <button class="step-tab" type="button" data-step="3"><span>04</span><strong>Book</strong></button>
+              <div class="step-track" aria-hidden="true">
+                <div class="step-tab"><span>01</span><strong>Create</strong></div>
+                <div class="step-tab"><span>02</span><strong>Launch</strong></div>
+                <div class="step-tab"><span>03</span><strong>Capture</strong></div>
+                <div class="step-tab"><span>04</span><strong>Book</strong></div>
               </div>
 
               <div class="scene-stack">
-                <div class="demo-scene is-active" data-scene="0">
+                <div class="demo-scene">
                   <h3>We build the ad.</h3>
                   <p>Offer, message, creative, and call-to-action are built for the campaign.</p>
                   <div class="ad-editor">
@@ -1549,7 +1742,7 @@
                   </div>
                 </div>
 
-                <div class="demo-scene" data-scene="1">
+                <div class="demo-scene">
                   <h3>We launch it for you.</h3>
                   <p>The campaign is published across publicly used platforms.</p>
                   <div class="launch-dashboard">
@@ -1564,7 +1757,7 @@
                   </div>
                 </div>
 
-                <div class="demo-scene" data-scene="2">
+                <div class="demo-scene">
                   <h3>The lead comes in.</h3>
                   <p>New inquiries are captured with the source and service need.</p>
                   <div class="lead-view">
@@ -1584,7 +1777,7 @@
                   </div>
                 </div>
 
-                <div class="demo-scene" data-scene="3">
+                <div class="demo-scene">
                   <h3>The job gets booked.</h3>
                   <p>Follow-up moves the prospect toward a quote, appointment, or booked job.</p>
                   <div class="booked-view">
@@ -2007,6 +2200,36 @@
       </p>
     </section>
 
+
+
+    <section class="careers-section" id="careers">
+      <div class="careers-card">
+        <div>
+          <div class="section-label">Careers</div>
+          <h2>Future roles at MarketWon.</h2>
+          <p>
+            As MarketWon grows, this is where we will post open roles for sales, marketing,
+            campaign support, content, and client operations.
+          </p>
+          <p>
+            We are not listing active openings on this page yet, but interested applicants can
+            check the careers page or reach out for future opportunities.
+          </p>
+          <div class="buttons" style="margin-top: 22px;">
+            <a class="btn btn-primary" href="careers.html">View Careers</a>
+            <a class="btn btn-secondary" href="mailto:contact@marketwonagency.com?subject=Future Career Interest at MarketWon">Send Interest</a>
+          </div>
+        </div>
+
+        <div class="careers-mini-list" aria-label="Future MarketWon career areas">
+          <div>Sales Consultants</div>
+          <div>Campaign Support</div>
+          <div>Content & Creative</div>
+          <div>Client Operations</div>
+        </div>
+      </div>
+    </section>
+
     <section class="contact" id="contact">
       <div class="contact-box">
         <div class="section-label">Free Lead & Marketing Review</div>
@@ -2034,57 +2257,34 @@
   </main>
 
   <footer>
-    <p>
-      © 2026 MarketWon LLC. MarketWon does not guarantee rankings, leads, booked jobs, revenue,
-      customer responses, or ad performance. Results depend on the business, market, offer, budget,
-      advertising platform, competition, and follow-up process.
-    </p>
+    <div class="footer-inner">
+      <div class="footer-copy">
+        <p>
+          © 2026 MarketWon LLC. MarketWon does not guarantee rankings, leads, booked jobs, revenue,
+          customer responses, or ad performance. Results depend on the business, market, offer, budget,
+          advertising platform, competition, and follow-up process.
+        </p>
+      </div>
+
+      <div class="footer-contact" aria-label="MarketWon contact information">
+        <strong>Contact MarketWon</strong>
+        <a href="tel:+14695251754">(469) 525-1754</a>
+        <a href="mailto:contact@marketwonagency.com">contact@marketwonagency.com</a>
+        <div class="social-links" aria-label="MarketWon social links">
+          <a href="https://www.linkedin.com/in/hunter-holcomb/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://www.instagram.com/hunterholcomb_/" target="_blank" rel="noopener">Instagram</a>
+          <a href="#" aria-disabled="true">YouTube</a>
+          <a href="#" aria-disabled="true">Facebook</a>
+        </div>
+      </div>
+
+      <div class="footer-links" aria-label="Footer links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms & Conditions</a>
+        <a href="careers.html">Careers</a>
+        <a href="mailto:contact@marketwonagency.com">Contact</a>
+      </div>
+    </div>
   </footer>
-
-  <script>
-    (function () {
-      const stage = document.querySelector('.campaign-stage');
-      const tabs = Array.from(document.querySelectorAll('.step-tab'));
-      const scenes = Array.from(document.querySelectorAll('.demo-scene'));
-
-      if (!stage || tabs.length === 0 || scenes.length === 0) return;
-
-      let currentStep = 0;
-      let timer;
-
-      function showStep(index) {
-        currentStep = index;
-        stage.classList.remove('step-0', 'step-1', 'step-2', 'step-3');
-        stage.classList.add(`step-${index}`);
-
-        tabs.forEach((tab, tabIndex) => {
-          tab.classList.toggle('is-active', tabIndex === index);
-        });
-
-        scenes.forEach((scene, sceneIndex) => {
-          scene.classList.toggle('is-active', sceneIndex === index);
-        });
-      }
-
-      function startAutoDemo() {
-        window.clearInterval(timer);
-        timer = window.setInterval(() => {
-          showStep((currentStep + 1) % scenes.length);
-        }, 2400);
-      }
-
-      tabs.forEach((tab) => {
-        tab.addEventListener('click', () => {
-          const nextStep = Number(tab.dataset.step || 0);
-          showStep(nextStep);
-          startAutoDemo();
-        });
-      });
-
-      showStep(0);
-      startAutoDemo();
-    }());
-  </script>
-
 </body>
 </html>
