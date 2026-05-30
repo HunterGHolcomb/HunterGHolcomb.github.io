@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Careers | MarketWon Agency</title>
+  <meta name="description" content="Future career opportunities at MarketWon, including sales, marketing, campaign support, content, and client operations." />
+  <link rel="icon" href="marketwon-mark.svg" type="image/svg+xml" />
+  <style>
+    :root {
+      --black: #07090D;
+      --charcoal: #12161C;
+      --cream: #F7F3EA;
+      --cream-deep: #EFE7D6;
+      --white: #FFFFFF;
+      --gold: #C7A34A;
+      --muted: #6B7280;
+      --light-muted: #D1D5DB;
+      --border: #E7DEC9;
+      --shadow: rgba(7, 9, 13, 0.12);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: Arial, Helvetica, sans-serif; background: var(--cream); color: var(--charcoal); line-height: 1.65; }
+    header { background: rgba(247, 243, 234, 0.96); border-bottom: 1px solid var(--border); padding: 18px 8%; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 50; backdrop-filter: blur(10px); }
+    .site-logo { width: 218px; height: auto; display: block; }
+    nav { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+    nav a { text-decoration: none; font-size: 0.9rem; font-weight: 800; color: var(--charcoal); transition: 0.2s ease; }
+    nav a:hover { color: var(--gold); }
+    .nav-cta { background: var(--black); color: var(--white); padding: 10px 15px; border-radius: 999px; }
+    .nav-cta:hover { background: var(--gold); color: var(--black); }
+    .page-hero { background: linear-gradient(135deg, #07090D 0%, #151A21 60%, #0A0E14 100%); color: var(--white); padding: 86px 8% 70px; }
+    .eyebrow { color: var(--gold); text-transform: uppercase; font-size: 0.8rem; font-weight: 900; letter-spacing: 1.7px; margin-bottom: 14px; }
+    h1 { max-width: 920px; font-size: clamp(2.6rem, 5.8vw, 5.2rem); line-height: 0.96; letter-spacing: -3px; margin-bottom: 18px; }
+    .page-hero p { max-width: 760px; color: var(--light-muted); font-size: 1.12rem; }
+    main { padding: 64px 8%; }
+    .content-card { max-width: 980px; background: var(--white); border: 1px solid var(--border); border-radius: 24px; padding: 38px; box-shadow: 0 18px 45px var(--shadow); }
+    .content-card h2 { color: var(--black); font-size: 1.55rem; letter-spacing: -0.7px; margin: 28px 0 10px; }
+    .content-card h2:first-child { margin-top: 0; }
+    .content-card h3 { color: var(--black); font-size: 1.12rem; margin: 18px 0 8px; }
+    .content-card p, .content-card li { color: var(--muted); font-size: 1rem; }
+    .content-card ul { margin: 10px 0 0 20px; }
+    .content-card li { margin-bottom: 8px; }
+    .notice { background: var(--cream); border: 1px solid var(--border); border-radius: 16px; padding: 16px; margin: 18px 0; color: var(--muted); }
+    .button-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 22px; }
+    .btn { display: inline-block; text-decoration: none; font-weight: 900; padding: 13px 18px; border-radius: 12px; transition: 0.2s ease; }
+    .btn-primary { background: var(--gold); color: var(--black); border: 1px solid var(--gold); }
+    .btn-secondary { background: var(--black); color: var(--white); border: 1px solid var(--black); }
+    .role-card { border: 1px solid var(--border); border-radius: 18px; padding: 22px; background: var(--cream); margin-top: 16px; }
+    .role-card h3 { margin-top: 0; }
+    .pill { display: inline-block; background: #EFE2B8; color: #73530B; padding: 6px 10px; border-radius: 999px; font-weight: 900; font-size: 0.78rem; margin-bottom: 12px; }
+    footer { background: var(--black); color: #9CA3AF; padding: 34px 8%; font-size: 0.9rem; border-top: 1px solid rgba(255,255,255,0.08); }
+    .footer-inner { display: flex; justify-content: space-between; gap: 28px; align-items: flex-start; flex-wrap: wrap; }
+    .footer-copy { max-width: 820px; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; justify-content: flex-end; }
+    .footer-links a { color: var(--light-muted); text-decoration: none; font-weight: 800; }
+    .footer-links a:hover { color: var(--gold); } .footer-contact { min-width: 250px; display: grid; gap: 8px; color: var(--light-muted); } .footer-contact strong { color: var(--white); font-size: 0.95rem; } .footer-contact a, .footer-contact span { color: var(--light-muted); text-decoration: none; font-weight: 700; } .footer-contact a:hover { color: var(--gold); } .social-links { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 4px; } .social-links a { color: var(--light-muted); text-decoration: none; font-weight: 800; } .social-links a:hover { color: var(--gold); } .social-links a[aria-disabled="true"] { opacity: 0.55; cursor: default; }
+    @media (max-width: 850px) { header { flex-direction: column; align-items: flex-start; gap: 14px; } .site-logo { width: 190px; } h1 { letter-spacing: -2px; } .content-card { padding: 28px; } .footer-inner, .footer-links { justify-content: flex-start; } }
+
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html" aria-label="MarketWon homepage"><img src="marketwon-logo.svg" alt="MarketWon Marketing Agency" class="site-logo"></a>
+    <nav>
+      <a href="index.html#what-we-do">What We Do</a>
+      <a href="index.html#lead-system">Process</a>
+      <a href="index.html#systems">Systems</a>
+      <a href="careers.html">Careers</a>
+      <a class="nav-cta" href="index.html#contact">Let’s Talk</a>
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <div class="eyebrow">Careers</div>
+    <h1>Build with MarketWon.</h1>
+    <p>Future roles for people interested in marketing, ads, lead systems, content, sales, and client operations.</p>
+  </section>
+
+  <main>
+    <div class="content-card">
+      <h2>Careers at MarketWon</h2>
+      <p>MarketWon is building a practical marketing company focused on ads, campaigns, landing pages, CRM systems, and follow-up workflows for local service businesses.</p>
+
+      <div class="notice">
+        <strong>Current status:</strong> We are not listing active openings on this page yet. Future roles will be posted here as they become available.
+      </div>
+
+      <h2>Future role areas</h2>
+      <div class="role-card">
+        <span class="pill">Future Role</span>
+        <h3>Sales Consultant</h3>
+        <p>Potential future role focused on prospecting, discovery calls, outreach, lead qualification, and helping businesses understand MarketWon’s marketing systems.</p>
+      </div>
+
+      <div class="role-card">
+        <span class="pill">Future Role</span>
+        <h3>Campaign Support</h3>
+        <p>Potential future role supporting ad setup, campaign organization, local business research, reporting, and client campaign workflows.</p>
+      </div>
+
+      <div class="role-card">
+        <span class="pill">Future Role</span>
+        <h3>Content & Creative Support</h3>
+        <p>Potential future role supporting ad copy, creative ideas, short-form content, landing page copy, and campaign assets.</p>
+      </div>
+
+      <div class="role-card">
+        <span class="pill">Future Role</span>
+        <h3>Client Operations</h3>
+        <p>Potential future role helping with onboarding, CRM setup coordination, follow-up workflows, client communication, and internal systems.</p>
+      </div>
+
+      <h2>Interested in future opportunities?</h2>
+      <p>Email MarketWon with your name, resume or LinkedIn profile, role interest, availability, and a short note explaining why you are interested.</p>
+      <div class="button-row">
+        <a class="btn btn-primary" href="mailto:contact@marketwonagency.com?subject=Future Career Interest at MarketWon">Send Career Interest</a>
+        <a class="btn btn-secondary" href="index.html">Back to Homepage</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-copy">
+        <p>© 2026 MarketWon LLC. MarketWon does not guarantee rankings, leads, booked jobs, revenue, customer responses, or ad performance.</p>
+      </div>
+      <div class="footer-contact" aria-label="MarketWon contact information">
+        <strong>Contact MarketWon</strong>
+        <a href="tel:+14695251754">(469) 525-1754</a>
+        <a href="mailto:contact@marketwonagency.com">contact@marketwonagency.com</a>
+        <div class="social-links" aria-label="MarketWon social links">
+          <a href="https://www.linkedin.com/in/hunter-holcomb/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://www.instagram.com/hunterholcomb_/" target="_blank" rel="noopener">Instagram</a>
+          <a href="#" aria-disabled="true">YouTube</a>
+          <a href="#" aria-disabled="true">Facebook</a>
+        </div>
+      </div>
+
+      <div class="footer-links" aria-label="Footer links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms & Conditions</a>
+        <a href="careers.html">Careers</a>
+        <a href="mailto:contact@marketwonagency.com">Contact</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
