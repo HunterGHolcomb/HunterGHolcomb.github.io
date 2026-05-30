@@ -12,6 +12,7 @@
       --black: #07090D;
       --charcoal: #12161C;
       --cream: #F7F3EA;
+      --cream-deep: #EFE7D6;
       --white: #FFFFFF;
       --gold: #C7A34A;
       --gold-soft: #EFE2B8;
@@ -40,10 +41,14 @@
       line-height: 1.6;
     }
 
+    img {
+      max-width: 100%;
+    }
+
     header {
       background: rgba(247, 243, 234, 0.96);
       border-bottom: 1px solid var(--border);
-      padding: 20px 8%;
+      padding: 18px 8%;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -53,29 +58,67 @@
       backdrop-filter: blur(10px);
     }
 
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--black);
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: var(--black);
+      color: var(--gold);
+      font-weight: 900;
+      letter-spacing: -1px;
+      border: 1px solid rgba(199, 163, 74, 0.55);
+      box-shadow: 0 10px 24px rgba(7, 9, 13, 0.16);
+    }
+
     .logo {
-      font-size: 1.55rem;
+      font-size: 1.52rem;
       font-weight: 900;
       letter-spacing: -0.7px;
       color: var(--black);
+      line-height: 1;
     }
 
     .logo span {
       color: var(--gold);
     }
 
+    .brand-subline {
+      display: block;
+      color: var(--muted);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.9px;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
     nav {
       display: flex;
       align-items: center;
-      gap: 24px;
+      gap: 22px;
       flex-wrap: wrap;
     }
 
     nav a {
       text-decoration: none;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       font-weight: 800;
       color: var(--charcoal);
+      transition: 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--gold);
     }
 
     .nav-cta {
@@ -83,6 +126,11 @@
       color: var(--white);
       padding: 10px 15px;
       border-radius: 999px;
+    }
+
+    .nav-cta:hover {
+      color: var(--black);
+      background: var(--gold);
     }
 
     .hero {
@@ -97,7 +145,7 @@
     }
 
     .hero-inner {
-      max-width: 980px;
+      max-width: 990px;
     }
 
     .eyebrow {
@@ -121,7 +169,7 @@
     }
 
     h1 {
-      max-width: 860px;
+      max-width: 900px;
       font-size: clamp(3rem, 7vw, 6.6rem);
       line-height: 0.92;
       letter-spacing: -4px;
@@ -129,7 +177,7 @@
     }
 
     .hero p {
-      max-width: 650px;
+      max-width: 670px;
       color: var(--light-muted);
       font-size: 1.25rem;
       margin-bottom: 36px;
@@ -166,12 +214,18 @@
       background: rgba(255, 255, 255, 0.05);
     }
 
+    .btn-dark {
+      background: var(--black);
+      color: var(--white);
+      border: 1px solid var(--black);
+    }
+
     section {
       padding: 82px 8%;
     }
 
     .section-header {
-      max-width: 820px;
+      max-width: 840px;
       margin-bottom: 42px;
     }
 
@@ -184,7 +238,9 @@
       margin-bottom: 10px;
     }
 
-    .section-header h2 {
+    .section-header h2,
+    .founder-copy h2,
+    .contact-box h2 {
       color: var(--black);
       font-size: clamp(2.1rem, 4vw, 3.5rem);
       line-height: 1;
@@ -215,6 +271,12 @@
       border-radius: 22px;
       padding: 30px;
       box-shadow: 0 18px 45px var(--shadow);
+      transition: 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 55px rgba(7, 9, 13, 0.16);
     }
 
     .card h3 {
@@ -226,6 +288,68 @@
 
     .card p {
       color: var(--muted);
+    }
+
+    .founder-note {
+      background: var(--cream);
+    }
+
+    .founder-grid {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .founder-image-wrap {
+      background:
+        linear-gradient(135deg, rgba(199, 163, 74, 0.22), rgba(255, 255, 255, 0.7));
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 14px;
+      box-shadow: 0 18px 45px var(--shadow);
+    }
+
+    .founder-image {
+      width: 100%;
+      display: block;
+      border-radius: 22px;
+    }
+
+    .founder-copy {
+      max-width: 780px;
+    }
+
+    .founder-copy p {
+      color: var(--muted);
+      font-size: 1.08rem;
+      margin-bottom: 16px;
+    }
+
+    .founder-signature {
+      color: var(--black) !important;
+      font-weight: 900;
+      margin-top: 22px;
+    }
+
+    .problem {
+      background: var(--cream-deep);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .problem-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .problem-item {
+      background: rgba(255, 255, 255, 0.74);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px;
+      font-weight: 800;
+      color: var(--charcoal);
     }
 
     .dark-section {
@@ -246,6 +370,12 @@
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 22px;
       padding: 30px;
+      transition: 0.2s ease;
+    }
+
+    .dark-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(199, 163, 74, 0.32);
     }
 
     .dark-card h3 {
@@ -284,6 +414,55 @@
 
     .feature span {
       color: var(--light-muted);
+    }
+
+    .lead-system {
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pathway {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .path-step {
+      background: var(--black);
+      color: var(--white);
+      border-radius: 18px;
+      padding: 22px 18px;
+      min-height: 150px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .path-step::after {
+      content: "";
+      position: absolute;
+      width: 86px;
+      height: 86px;
+      border-radius: 50%;
+      background: rgba(199, 163, 74, 0.16);
+      right: -28px;
+      bottom: -28px;
+    }
+
+    .path-step span {
+      color: var(--gold);
+      font-size: 0.78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .path-step h3 {
+      margin-top: 12px;
+      line-height: 1.1;
+      position: relative;
+      z-index: 1;
     }
 
     .system-card {
@@ -328,7 +507,7 @@
     }
 
     .contact-box {
-      max-width: 920px;
+      max-width: 930px;
       background: rgba(255, 255, 255, 0.06);
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 26px;
@@ -336,17 +515,31 @@
     }
 
     .contact-box h2 {
-      font-size: clamp(2.1rem, 4vw, 3.4rem);
-      line-height: 1;
-      letter-spacing: -2px;
-      margin-bottom: 16px;
+      color: var(--white);
     }
 
     .contact-box p {
       color: var(--light-muted);
-      max-width: 690px;
+      max-width: 710px;
       margin-bottom: 24px;
       font-size: 1.08rem;
+    }
+
+    .review-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin: 22px 0 28px;
+      max-width: 760px;
+    }
+
+    .review-list div {
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 12px;
+      color: var(--light-muted);
+      font-weight: 700;
     }
 
     .small-note {
@@ -364,12 +557,19 @@
       border-top: 1px solid rgba(255, 255, 255, 0.08);
     }
 
+    @media (max-width: 1150px) {
+      .pathway {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
     @media (max-width: 1050px) {
       .grid-4 {
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .split {
+      .split,
+      .founder-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -395,7 +595,9 @@
       }
 
       .grid-3,
-      .grid-4 {
+      .grid-4,
+      .pathway,
+      .review-list {
         grid-template-columns: 1fr;
       }
 
@@ -408,18 +610,24 @@
 
 <body>
   <header>
-    <div class="logo">Market<span>Won</span></div>
+    <a class="brand" href="#top" aria-label="MarketWon homepage">
+      <div class="brand-mark">MW</div>
+      <div>
+        <div class="logo">Market<span>Won</span></div>
+        <span class="brand-subline">Marketing Agency</span>
+      </div>
+    </a>
 
     <nav>
       <a href="#what-we-do">What We Do</a>
-      <a href="#how-we-work">How We Work</a>
+      <a href="#lead-system">Lead System</a>
       <a href="#systems">Systems</a>
       <a href="#why">Why MarketWon</a>
       <a class="nav-cta" href="#contact">Let’s Talk</a>
     </nav>
   </header>
 
-  <main>
+  <main id="top">
     <section class="hero">
       <div class="hero-inner">
         <div class="eyebrow">Marketing • Ads • Lead Systems</div>
@@ -429,8 +637,51 @@
         </p>
 
         <div class="buttons">
-          <a class="btn btn-primary" href="mailto:contact@marketwonagency.com?subject=Free Marketing Review Request">Get a Free Marketing Review</a>
-          <a class="btn btn-secondary" href="#what-we-do">Explore Capabilities</a>
+          <a class="btn btn-primary" href="mailto:contact@marketwonagency.com?subject=Free Lead and Marketing Review Request">Get a Free Review</a>
+          <a class="btn btn-secondary" href="#lead-system">See the System</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="founder-note">
+      <div class="founder-grid">
+        <div class="founder-image-wrap">
+          <img src="hunter-headshot-marketwon.webp" alt="Hunter Holcomb, founder of MarketWon" class="founder-image">
+        </div>
+
+        <div class="founder-copy">
+          <div class="section-label">Founder Note</div>
+          <h2>A more practical way to think about marketing.</h2>
+          <p>
+            MarketWon was built for local service businesses that need more than random posts,
+            scattered ads, or a website that does not turn interest into real conversations.
+          </p>
+          <p>
+            The goal is simple: create better campaigns, capture leads properly, and follow up
+            before opportunities go cold. No confusing agency talk. No fake guarantees. Just a
+            clearer marketing system built around attention, response, and follow-up.
+          </p>
+          <p class="founder-signature">— Hunter Holcomb, Founder of MarketWon</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="problem">
+      <div class="split">
+        <div class="section-header">
+          <div class="section-label">The Problem</div>
+          <h2>Most businesses do not just need more marketing. They need a better path from attention to booked work.</h2>
+          <p>
+            Getting attention is only the first step. If calls are missed, forms sit unanswered, and old leads are never worked again, the business loses opportunities it already paid or worked to create.
+          </p>
+        </div>
+
+        <div class="problem-list">
+          <div class="problem-item">Ads or posts send people to weak pages.</div>
+          <div class="problem-item">Calls get missed and never followed up with.</div>
+          <div class="problem-item">Form leads sit too long before anyone responds.</div>
+          <div class="problem-item">Leads are scattered across inboxes, phones, and spreadsheets.</div>
+          <div class="problem-item">Past customers and old leads are not reactivated.</div>
         </div>
       </div>
     </section>
@@ -473,6 +724,39 @@
         <div class="card">
           <h3>Automation & AI Follow-Up</h3>
           <p>Missed-call text-back, automated follow-up, reminders, review requests, and AI-assisted lead response.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="lead-system" id="lead-system">
+      <div class="section-header">
+        <div class="section-label">The MarketWon Lead System</div>
+        <h2>One connected path from campaign to conversion.</h2>
+        <p>
+          The goal is not just to launch marketing. The goal is to make sure interest has somewhere to go, gets tracked, and gets followed up with before the opportunity goes cold.
+        </p>
+      </div>
+
+      <div class="pathway">
+        <div class="path-step">
+          <span>Step 01</span>
+          <h3>Campaign</h3>
+        </div>
+        <div class="path-step">
+          <span>Step 02</span>
+          <h3>Landing Page</h3>
+        </div>
+        <div class="path-step">
+          <span>Step 03</span>
+          <h3>Lead Capture</h3>
+        </div>
+        <div class="path-step">
+          <span>Step 04</span>
+          <h3>CRM & Follow-Up</h3>
+        </div>
+        <div class="path-step">
+          <span>Step 05</span>
+          <h3>Reviews & Reactivation</h3>
         </div>
       </div>
     </section>
@@ -651,14 +935,24 @@
 
     <section class="contact" id="contact">
       <div class="contact-box">
+        <div class="section-label">Free Lead & Marketing Review</div>
         <h2>Let’s look at where your marketing is losing opportunities.</h2>
         <p>
-          Request a free marketing review. We will look at your campaigns, landing page, lead capture,
+          Request a free review. We will look at your campaigns, landing page, lead capture,
           CRM setup, and follow-up process.
         </p>
 
+        <div class="review-list">
+          <div>Campaign direction</div>
+          <div>Landing page or website</div>
+          <div>Lead capture process</div>
+          <div>Follow-up gaps</div>
+          <div>CRM/automation needs</div>
+          <div>Best next step</div>
+        </div>
+
         <div class="buttons">
-          <a class="btn btn-primary" href="mailto:contact@marketwonagency.com?subject=Free Marketing Review Request">Email MarketWon</a>
+          <a class="btn btn-primary" href="mailto:contact@marketwonagency.com?subject=Free Lead and Marketing Review Request">Email MarketWon</a>
           <a class="btn btn-secondary" href="mailto:contact@marketwonagency.com?subject=Question About MarketWon Services">Ask a Question</a>
         </div>
       </div>
