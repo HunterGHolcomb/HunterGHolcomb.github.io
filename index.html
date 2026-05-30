@@ -3,273 +3,2088 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>MarketWon Agency | Ads, Marketing & Lead Systems</title>
-  <meta name="description" content="MarketWon builds ad campaigns, landing pages, CRM systems, and follow-up workflows for local service businesses." />
+  <meta name="description" content="MarketWon is a marketing company that helps local service businesses build ad campaigns, landing pages, CRM systems, and follow-up workflows that turn attention into real opportunities." />
   <link rel="icon" href="marketwon-mark.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    :root {
+      --black: #07090D;
+      --charcoal: #12161C;
+      --cream: #F7F3EA;
+      --cream-deep: #EFE7D6;
+      --white: #FFFFFF;
+      --gold: #C7A34A;
+      --gold-soft: #EFE2B8;
+      --muted: #6B7280;
+      --light-muted: #D1D5DB;
+      --border: #E7DEC9;
+      --card: #FFFFFF;
+      --dark-card: #171B21;
+      --shadow: rgba(7, 9, 13, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    header {
+      background: rgba(247, 243, 234, 0.96);
+      border-bottom: 1px solid var(--border);
+      padding: 18px 8%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--black);
+    }
+
+    .site-logo {
+      width: 218px;
+      height: auto;
+      display: block;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: var(--black);
+      color: var(--gold);
+      font-weight: 900;
+      letter-spacing: -1px;
+      border: 1px solid rgba(199, 163, 74, 0.55);
+      box-shadow: 0 10px 24px rgba(7, 9, 13, 0.16);
+    }
+
+    .logo {
+      font-size: 1.52rem;
+      font-weight: 900;
+      letter-spacing: -0.7px;
+      color: var(--black);
+      line-height: 1;
+    }
+
+    .logo span {
+      color: var(--gold);
+    }
+
+    .brand-subline {
+      display: block;
+      color: var(--muted);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.9px;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: var(--charcoal);
+      transition: 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--gold);
+    }
+
+    .nav-cta {
+      background: var(--black);
+      color: var(--white);
+      padding: 10px 15px;
+      border-radius: 999px;
+    }
+
+    .nav-cta:hover {
+      color: var(--black);
+      background: var(--gold);
+    }
+
+    .hero {
+      min-height: 88vh;
+      padding: 94px 8%;
+      display: flex;
+      align-items: center;
+      background:
+        radial-gradient(circle at 78% 16%, rgba(199, 163, 74, 0.25), transparent 34%),
+        radial-gradient(circle at 20% 72%, rgba(255, 255, 255, 0.06), transparent 30%),
+        linear-gradient(135deg, #07090D 0%, #151A21 58%, #0A0E14 100%);
+      color: var(--white);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: linear-gradient(to bottom, black, transparent 88%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(430px, 0.78fr);
+      gap: 58px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-inner {
+      max-width: 860px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--gold);
+      font-size: 0.8rem;
+      font-weight: 900;
+      letter-spacing: 1.7px;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 2px;
+      background: var(--gold);
+      display: inline-block;
+    }
+
+    h1 {
+      max-width: 880px;
+      font-size: clamp(3rem, 6.6vw, 6.2rem);
+      line-height: 0.92;
+      letter-spacing: -4px;
+      margin-bottom: 28px;
+    }
+
+    .hero p {
+      max-width: 690px;
+      color: var(--light-muted);
+      font-size: 1.2rem;
+      margin-bottom: 36px;
+    }
+
+    .hero-proof {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+
+    .proof-pill {
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      background: rgba(255, 255, 255, 0.06);
+      color: rgba(255, 255, 255, 0.82);
+      border-radius: 999px;
+      padding: 9px 12px;
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      font-weight: 900;
+      padding: 14px 21px;
+      border-radius: 12px;
+      transition: 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--black);
+      border: 1px solid var(--gold);
+    }
+
+    .btn-secondary {
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .btn-dark {
+      background: var(--black);
+      color: var(--white);
+      border: 1px solid var(--black);
+    }
+
+    .hero-visual {
+      width: min(100%, 560px);
+      justify-self: end;
+      position: relative;
+    }
+
+    .campaign-video {
+      position: relative;
+      width: 100%;
+      border-radius: 32px;
+      padding: 22px;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.045));
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      box-shadow: 0 34px 100px rgba(0, 0, 0, 0.34);
+      overflow: hidden;
+    }
+
+    .campaign-video::before {
+      content: "";
+      position: absolute;
+      width: 310px;
+      height: 310px;
+      border-radius: 50%;
+      background: rgba(199, 163, 74, 0.19);
+      filter: blur(9px);
+      top: -130px;
+      right: -110px;
+      animation: floatGlow 8s ease-in-out infinite alternate;
+    }
+
+    .campaign-topbar {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .campaign-label {
+      color: var(--white);
+      font-weight: 900;
+      letter-spacing: -0.4px;
+    }
+
+    .campaign-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--gold);
+      font-size: 0.75rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .campaign-live::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 0 7px rgba(199, 163, 74, 0.12);
+      animation: pulseDot 1.6s ease-in-out infinite;
+    }
+
+    .campaign-stage {
+      position: relative;
+      z-index: 2;
+      min-height: 486px;
+      border-radius: 26px;
+      background:
+        radial-gradient(circle at 18% 24%, rgba(199, 163, 74, 0.16), transparent 30%),
+        linear-gradient(180deg, rgba(7, 9, 13, 0.88), rgba(14, 18, 24, 0.94));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      overflow: hidden;
+      padding: 18px;
+    }
+
+    .stage-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      background-size: 38px 38px;
+      opacity: 0.8;
+      pointer-events: none;
+    }
+
+    .step-track {
+      position: relative;
+      z-index: 3;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .step-tab {
+      min-height: 58px;
+      border-radius: 16px;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.065);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      color: rgba(255, 255, 255, 0.62);
+      overflow: hidden;
+      position: relative;
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .step-tab::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(199, 163, 74, 0.25), rgba(255, 255, 255, 0));
+      opacity: 0;
+      transition: 0.25s ease;
+    }
+
+    .step-tab.is-active {
+      color: var(--white);
+      border-color: rgba(199, 163, 74, 0.62);
+      background: rgba(199, 163, 74, 0.12);
+      transform: translateY(-2px);
+    }
+
+    .step-tab.is-active::before {
+      opacity: 1;
+    }
+
+    .step-tab span {
+      display: block;
+      color: var(--gold);
+      font-size: 0.68rem;
+      font-weight: 900;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-tab strong {
+      display: block;
+      color: inherit;
+      font-size: 0.85rem;
+      line-height: 1.1;
+      position: relative;
+      z-index: 1;
+    }
+
+    .scene-stack {
+      position: relative;
+      z-index: 2;
+      height: 350px;
+    }
+
+    .demo-scene {
+      position: absolute;
+      inset: 0;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.055);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      padding: 18px;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(12px) scale(0.985);
+      overflow: hidden;
+      transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease;
+    }
+
+    .demo-scene.is-active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
+    }
+
+    .demo-scene h3 {
+      color: var(--white);
+      font-size: 1.15rem;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+
+    .demo-scene p {
+      color: var(--light-muted);
+      font-size: 0.84rem;
+      line-height: 1.35;
+      max-width: 360px;
+      margin-bottom: 16px;
+    }
+
+    .ad-editor {
+      display: grid;
+      grid-template-columns: 0.76fr 1fr;
+      gap: 14px;
+      align-items: stretch;
+    }
+
+    .editor-tools {
+      display: grid;
+      gap: 9px;
+    }
+
+    .tool-line,
+    .dash-line {
+      height: 42px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tool-line::after,
+    .dash-line::after {
+      content: "";
+      position: absolute;
+      height: 100%;
+      width: 42%;
+      left: -42%;
+      top: 0;
+      background: linear-gradient(90deg, transparent, rgba(199, 163, 74, 0.32), transparent);
+      animation: shimmer 2.2s ease-in-out infinite;
+    }
+
+    .mini-ad {
+      background: var(--cream);
+      color: var(--charcoal);
+      border-radius: 18px;
+      padding: 14px;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+    }
+
+    .mini-ad-image {
+      height: 104px;
+      border-radius: 14px;
+      background:
+        linear-gradient(135deg, rgba(199, 163, 74, 0.7), rgba(7, 9, 13, 0.9)),
+        repeating-linear-gradient(45deg, rgba(255,255,255,0.18) 0 10px, transparent 10px 20px);
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      font-weight: 900;
+      text-align: center;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .mini-ad strong {
+      color: var(--black);
+      display: block;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+
+    .mini-ad span {
+      color: var(--muted);
+      display: block;
+      font-size: 0.76rem;
+      margin-bottom: 10px;
+    }
+
+    .mini-ad-button {
+      background: var(--black);
+      color: var(--white);
+      border-radius: 10px;
+      padding: 9px 10px;
+      text-align: center;
+      font-size: 0.78rem;
+      font-weight: 900;
+    }
+
+    .launch-dashboard {
+      display: grid;
+      gap: 12px;
+    }
+
+    .dash-card,
+    .text-thread,
+    .calendar-card,
+    .lead-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 18px;
+      padding: 14px;
+    }
+
+    .dash-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.82rem;
+      padding: 9px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .dash-row:last-child {
+      border-bottom: 0;
+    }
+
+    .dash-row b {
+      color: var(--gold);
+    }
+
+    .launch-button {
+      background: var(--gold);
+      color: var(--black);
+      border-radius: 14px;
+      padding: 13px;
+      text-align: center;
+      font-weight: 900;
+      animation: launchButtonPulse 1.8s ease-in-out infinite;
+    }
+
+    .lead-view,
+    .booked-view {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .phone-card {
+      background: #090D13;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      padding: 14px;
+      min-height: 206px;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+    }
+
+    .phone-top {
+      height: 18px;
+      display: flex;
+      justify-content: space-between;
+      color: rgba(255,255,255,0.55);
+      font-size: 0.68rem;
+      margin-bottom: 18px;
+    }
+
+    .message-bubble {
+      background: var(--white);
+      color: var(--black);
+      border-radius: 16px 16px 16px 4px;
+      padding: 12px;
+      font-size: 0.86rem;
+      line-height: 1.25;
+    }
+
+    .lead-card {
+      border-color: rgba(199, 163, 74, 0.28);
+    }
+
+    .lead-card small,
+    .calendar-card small {
+      color: var(--gold);
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 7px;
+    }
+
+    .lead-card strong,
+    .calendar-card strong {
+      color: var(--white);
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .lead-meta {
+      display: grid;
+      gap: 8px;
+      color: var(--light-muted);
+      font-size: 0.8rem;
+    }
+
+    .lead-meta span {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding-bottom: 7px;
+    }
+
+    .reply {
+      background: var(--white);
+      color: var(--black);
+      border-radius: 14px;
+      padding: 10px;
+      font-size: 0.78rem;
+      margin-bottom: 10px;
+    }
+
+    .reply.gold {
+      background: rgba(199, 163, 74, 0.92);
+      color: var(--black);
+      font-weight: 800;
+    }
+
+    .calendar-chip {
+      background: var(--gold);
+      color: var(--black);
+      border-radius: 14px;
+      padding: 13px;
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 12px;
+      align-items: center;
+      font-weight: 900;
+    }
+
+    .calendar-chip span {
+      display: block;
+      font-size: 0.68rem;
+      text-transform: uppercase;
+    }
+
+    .calendar-chip b {
+      display: block;
+      font-size: 1.7rem;
+      line-height: 1;
+    }
+
+    .auto-cursor {
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      left: 12%;
+      top: 67px;
+      clip-path: polygon(0 0, 0 100%, 33% 72%, 52% 100%, 66% 93%, 48% 66%, 82% 66%);
+      background: var(--white);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.24);
+      z-index: 5;
+      transition: left 0.38s ease, top 0.38s ease;
+    }
+
+    .campaign-stage.step-0 .auto-cursor { left: 12%; top: 67px; }
+    .campaign-stage.step-1 .auto-cursor { left: 36%; top: 67px; }
+    .campaign-stage.step-2 .auto-cursor { left: 60%; top: 67px; }
+    .campaign-stage.step-3 .auto-cursor { left: 84%; top: 67px; }
+
+    .auto-cursor::after {
+      content: "";
+      position: absolute;
+      width: 34px;
+      height: 34px;
+      left: -9px;
+      top: -9px;
+      border-radius: 50%;
+      border: 1px solid rgba(199, 163, 74, 0.75);
+      animation: clickRing 2.6s ease-out infinite;
+    }
+
+    .video-caption {
+      position: relative;
+      z-index: 2;
+      color: rgba(255, 255, 255, 0.58);
+      font-size: 0.78rem;
+      margin-top: 14px;
+      text-align: center;
+    }
+
+    @keyframes floatGlow {
+      0% { transform: translate3d(0, 0, 0) scale(1); }
+      100% { transform: translate3d(-28px, 38px, 0) scale(1.12); }
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(0.72); opacity: 0.65; }
+    }
+
+    @keyframes shimmer {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(340%); }
+    }
+
+    @keyframes launchButtonPulse {
+      0%, 100% { transform: translateY(0); box-shadow: 0 0 0 rgba(199, 163, 74, 0); }
+      50% { transform: translateY(-2px); box-shadow: 0 0 0 8px rgba(199, 163, 74, 0.1); }
+    }
+
+    @keyframes clickRing {
+      0%, 72%, 100% { transform: scale(0.75); opacity: 0; }
+      8% { transform: scale(1); opacity: 1; }
+      22% { transform: scale(1.55); opacity: 0; }
+    }
+
+    .process-visual-section {
+      background: var(--cream);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .process-visual-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 18px;
+      box-shadow: 0 18px 45px var(--shadow);
+      overflow: hidden;
+    }
+
+    .process-visual-card img {
+      display: block;
+      width: 100%;
+      border-radius: 20px;
+    }
+
+    section {
+      padding: 82px 8%;
+    }
+
+    .section-header {
+      max-width: 840px;
+      margin-bottom: 42px;
+    }
+
+    .section-label {
+      color: var(--gold);
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 1.5px;
+      margin-bottom: 10px;
+    }
+
+    .section-header h2,
+    .founder-copy h2,
+    .contact-box h2 {
+      color: var(--black);
+      font-size: clamp(2.1rem, 4vw, 3.5rem);
+      line-height: 1;
+      letter-spacing: -2px;
+      margin-bottom: 16px;
+    }
+
+    .section-header p {
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 30px;
+      box-shadow: 0 18px 45px var(--shadow);
+      transition: 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 55px rgba(7, 9, 13, 0.16);
+    }
+
+    .card h3 {
+      color: var(--black);
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+      letter-spacing: -0.5px;
+    }
+
+    .card p {
+      color: var(--muted);
+    }
+
+    .founder-note {
+      background: var(--cream);
+    }
+
+    .founder-grid {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .founder-image-wrap {
+      background:
+        linear-gradient(135deg, rgba(199, 163, 74, 0.22), rgba(255, 255, 255, 0.7));
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 14px;
+      box-shadow: 0 18px 45px var(--shadow);
+    }
+
+    .founder-image {
+      width: 100%;
+      display: block;
+      border-radius: 22px;
+    }
+
+    .founder-copy {
+      max-width: 780px;
+    }
+
+    .founder-copy p {
+      color: var(--muted);
+      font-size: 1.08rem;
+      margin-bottom: 16px;
+    }
+
+    .founder-signature {
+      color: var(--black) !important;
+      font-weight: 900;
+      margin-top: 22px;
+    }
+
+    .problem {
+      background: var(--cream-deep);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .problem-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .problem-item {
+      background: rgba(255, 255, 255, 0.74);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px;
+      font-weight: 800;
+      color: var(--charcoal);
+    }
+
+    .dark-section {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .dark-section .section-header h2 {
+      color: var(--white);
+    }
+
+    .dark-section .section-header p {
+      color: var(--light-muted);
+    }
+
+    .dark-card {
+      background: var(--dark-card);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 22px;
+      padding: 30px;
+      transition: 0.2s ease;
+    }
+
+    .dark-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(199, 163, 74, 0.32);
+    }
+
+    .dark-card h3 {
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .dark-card p {
+      color: var(--light-muted);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .feature {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 18px;
+    }
+
+    .feature strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--white);
+    }
+
+    .feature span {
+      color: var(--light-muted);
+    }
+
+    .lead-system {
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pathway {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .path-step {
+      background: var(--black);
+      color: var(--white);
+      border-radius: 18px;
+      padding: 22px 18px;
+      min-height: 150px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .path-step::after {
+      content: "";
+      position: absolute;
+      width: 86px;
+      height: 86px;
+      border-radius: 50%;
+      background: rgba(199, 163, 74, 0.16);
+      right: -28px;
+      bottom: -28px;
+    }
+
+    .path-step span {
+      color: var(--gold);
+      font-size: 0.78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .path-step h3 {
+      margin-top: 12px;
+      line-height: 1.1;
+      position: relative;
+      z-index: 1;
+    }
+
+
+
+    .ai-booking {
+      background:
+        radial-gradient(circle at 88% 12%, rgba(199, 163, 74, 0.22), transparent 30%),
+        linear-gradient(135deg, #07090D 0%, #111821 55%, #07090D 100%);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ai-booking-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .ai-booking h2 {
+      color: var(--white);
+      font-size: clamp(2.2rem, 4vw, 3.7rem);
+      line-height: 1;
+      letter-spacing: -2px;
+      margin-bottom: 18px;
+      max-width: 760px;
+    }
+
+    .ai-booking p {
+      color: var(--light-muted);
+      font-size: 1.08rem;
+      max-width: 720px;
+      margin-bottom: 22px;
+    }
+
+    .booking-steps {
+      display: grid;
+      gap: 12px;
+      margin: 26px 0 28px;
+      max-width: 720px;
+    }
+
+    .booking-step {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 14px;
+      align-items: start;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 18px;
+      padding: 17px;
+    }
+
+    .booking-step-number {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: rgba(199, 163, 74, 0.16);
+      border: 1px solid rgba(199, 163, 74, 0.42);
+      color: var(--gold);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+    }
+
+    .booking-step strong {
+      display: block;
+      color: var(--white);
+      margin-bottom: 2px;
+    }
+
+    .booking-step span {
+      color: var(--light-muted);
+    }
+
+    .phone-demo-wrap {
+      display: flex;
+      justify-content: center;
+    }
+
+    .phone-demo {
+      width: min(100%, 460px);
+      background: #10151D;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 34px;
+      padding: 18px;
+      box-shadow: 0 32px 80px rgba(0, 0, 0, 0.34);
+      position: relative;
+    }
+
+    .phone-demo::before {
+      content: "";
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 82px;
+      height: 5px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.16);
+    }
+
+    .phone-screen {
+      background: #F7F3EA;
+      color: var(--charcoal);
+      border-radius: 26px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .phone-header {
+      background: var(--black);
+      color: var(--white);
+      padding: 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+    }
+
+    .phone-header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .phone-header-title {
+      font-weight: 900;
+      letter-spacing: -0.4px;
+    }
+
+    .live-dot {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--gold);
+      font-size: 0.75rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .live-dot::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 0 5px rgba(199, 163, 74, 0.15);
+    }
+
+    .phone-subtitle {
+      color: var(--light-muted);
+      font-size: 0.82rem;
+    }
+
+    .chat-area {
+      padding: 18px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .message {
+      max-width: 86%;
+      padding: 12px 14px;
+      border-radius: 16px;
+      font-size: 0.93rem;
+      line-height: 1.35;
+      box-shadow: 0 10px 22px rgba(7, 9, 13, 0.08);
+    }
+
+    .message.customer {
+      justify-self: end;
+      background: var(--black);
+      color: var(--white);
+      border-bottom-right-radius: 5px;
+    }
+
+    .message.ai {
+      justify-self: start;
+      background: var(--white);
+      color: var(--charcoal);
+      border: 1px solid var(--border);
+      border-bottom-left-radius: 5px;
+    }
+
+    .typing-row {
+      display: inline-flex;
+      gap: 4px;
+      align-items: center;
+      background: var(--white);
+      border: 1px solid var(--border);
+      width: max-content;
+      padding: 10px 12px;
+      border-radius: 16px;
+    }
+
+    .typing-row span {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #9CA3AF;
+      display: block;
+    }
+
+    .booking-summary {
+      margin: 0 18px 18px;
+      background: var(--black);
+      color: var(--white);
+      border-radius: 20px;
+      padding: 16px;
+    }
+
+    .booking-summary-title {
+      color: var(--gold);
+      font-size: 0.78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .summary-item {
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 10px;
+    }
+
+    .summary-item small {
+      display: block;
+      color: var(--light-muted);
+      font-size: 0.7rem;
+      margin-bottom: 2px;
+    }
+
+    .summary-item strong {
+      color: var(--white);
+      font-size: 0.9rem;
+    }
+
+    .demo-note {
+      color: rgba(255, 255, 255, 0.56);
+      font-size: 0.78rem;
+      margin-top: 14px;
+      text-align: center;
+    }
+
+    .system-card {
+      min-height: 230px;
+    }
+
+    .system-card .number {
+      color: var(--gold);
+      font-size: 0.85rem;
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--gold-soft);
+      color: #73530B;
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+
+    .package-card ul {
+      margin-top: 16px;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .package-card li {
+      margin-bottom: 8px;
+    }
+
+    .contact {
+      background:
+        radial-gradient(circle at 20% 20%, rgba(199, 163, 74, 0.24), transparent 32%),
+        var(--charcoal);
+      color: var(--white);
+    }
+
+    .contact-box {
+      max-width: 930px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 26px;
+      padding: 42px;
+    }
+
+    .contact-box h2 {
+      color: var(--white);
+    }
+
+    .contact-box p {
+      color: var(--light-muted);
+      max-width: 710px;
+      margin-bottom: 24px;
+      font-size: 1.08rem;
+    }
+
+    .review-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin: 22px 0 28px;
+      max-width: 760px;
+    }
+
+    .review-list div {
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 12px;
+      color: var(--light-muted);
+      font-weight: 700;
+    }
+
+    .small-note {
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      max-width: 950px;
+    }
+
+    footer {
+      background: var(--black);
+      color: #9CA3AF;
+      padding: 30px 8%;
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    @media (max-width: 1150px) {
+      .pathway {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 1050px) {
+      .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .split,
+      .founder-grid,
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        justify-self: start;
+        width: min(100%, 560px);
+      }
+    }
+
+    @media (max-width: 850px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+      }
+
+      .site-logo {
+        width: 190px;
+      }
+
+      nav {
+        gap: 14px;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 82px;
+      }
+
+      .hero-visual {
+        width: 100%;
+      }
+
+      .campaign-stage {
+        min-height: 610px;
+      }
+
+      .step-track,
+      .ad-editor,
+      .lead-view,
+      .booked-view {
+        grid-template-columns: 1fr;
+      }
+
+      .scene-stack {
+        height: 455px;
+      }
+
+      .auto-cursor {
+        display: none;
+      }
+
+      h1 {
+        letter-spacing: -2.5px;
+      }
+
+      .grid-3,
+      .grid-4,
+      .pathway,
+      .summary-grid,
+      .review-list {
+        grid-template-columns: 1fr;
+      }
+
+      .ai-booking-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .phone-demo {
+        max-width: 430px;
+      }
+
+      .contact-box {
+        padding: 30px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <header class="site-header">
-    <a class="brand-link" href="#top" aria-label="MarketWon home">
-      <img src="marketwon-logo.svg" alt="MarketWon" class="site-logo" />
+  <header>
+    <a class="brand" href="#top" aria-label="MarketWon homepage">
+      <img src="marketwon-logo.svg" alt="MarketWon Marketing Agency" class="site-logo">
     </a>
 
-    <nav class="site-nav" aria-label="Main navigation">
+    <nav>
       <a href="#what-we-do">What We Do</a>
-      <a href="#how-it-works">How It Works</a>
+      <a href="#lead-system">Process</a>
+      <a href="#ai-booking">Text-to-Book</a>
       <a href="#systems">Systems</a>
-      <a href="#founder">Founder</a>
-      <a href="#packages">Starting Points</a>
+      <a href="#why">Why MarketWon</a>
       <a class="nav-cta" href="#contact">Let’s Talk</a>
     </nav>
   </header>
 
   <main id="top">
-    <section class="hero section-dark">
-      <div class="hero-copy">
-        <div class="eyebrow">Ads • Lead Capture • Follow-Up</div>
-        <h1>Ads that create demand. Systems that capture it.</h1>
-        <p>MarketWon builds the campaign, landing page, and follow-up system that helps turn attention into booked work.</p>
-        <div class="button-row">
-          <a class="btn btn-primary" href="mailto:contact@marketwonagency.com?subject=Free Marketing Review Request">Get a Free Review</a>
-          <a class="btn btn-secondary" href="#how-it-works">See the System</a>
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-inner">
+          <div class="eyebrow">Ads • Campaigns • Lead Systems</div>
+          <h1>Ads that create demand. Systems that capture it.</h1>
+          <p>
+            MarketWon builds ads, landing pages, and follow-up systems that turn attention into booked work.
+          </p>
+
+          <div class="buttons">
+            <a class="btn btn-primary" href="mailto:contact@marketwonagency.com?subject=Free Lead and Marketing Review Request">Get a Free Review</a>
+            <a class="btn btn-secondary" href="#lead-system">See the System</a>
+          </div>
         </div>
-      </div>
 
-      <div class="flow-demo" aria-label="Animated MarketWon campaign flow demo">
-        <div class="flow-shell">
-          <div class="flow-header">
-            <span>MarketWon Campaign Flow</span>
-            <strong>Auto Demo</strong>
-          </div>
+        <div class="hero-visual" aria-label="Animated MarketWon ad-to-booked-job workflow">
+          <div class="campaign-video">
+            <div class="campaign-topbar">
+              <div class="campaign-label">MarketWon campaign flow</div>
+              <div class="campaign-live">Auto demo</div>
+            </div>
 
-          <div class="flow-steps" aria-hidden="true">
-            <span class="flow-step step-create">01 Create</span>
-            <span class="flow-step step-launch">02 Launch</span>
-            <span class="flow-step step-capture">03 Capture</span>
-            <span class="flow-step step-book">04 Book</span>
-            <span class="auto-cursor"></span>
-          </div>
+            <div class="campaign-stage step-0">
+              <div class="stage-grid"></div>
 
-          <div class="stage-window">
-            <article class="stage-card stage-create-card">
-              <span class="stage-label">Create</span>
-              <h3>We build the ad.</h3>
-              <p>Offer, message, creative, and call-to-action built around local demand.</p>
-              <div class="ad-mockup">
-                <div class="ad-topbar">Local Quote Campaign</div>
-                <div class="ad-body">
-                  <strong>Fast Local Quote Requests</strong>
-                  <span></span>
-                  <span class="short-line"></span>
-                  <button type="button">Request a Quote</button>
+              <div class="step-track" aria-label="MarketWon campaign process demo controls">
+                <button class="step-tab is-active" type="button" data-step="0"><span>01</span><strong>Create</strong></button>
+                <button class="step-tab" type="button" data-step="1"><span>02</span><strong>Launch</strong></button>
+                <button class="step-tab" type="button" data-step="2"><span>03</span><strong>Capture</strong></button>
+                <button class="step-tab" type="button" data-step="3"><span>04</span><strong>Book</strong></button>
+              </div>
+
+              <div class="scene-stack">
+                <div class="demo-scene is-active" data-scene="0">
+                  <h3>We build the ad.</h3>
+                  <p>Offer, message, creative, and call-to-action are built for the campaign.</p>
+                  <div class="ad-editor">
+                    <div class="editor-tools">
+                      <div class="tool-line"></div>
+                      <div class="tool-line"></div>
+                      <div class="tool-line"></div>
+                      <div class="tool-line"></div>
+                    </div>
+                    <div class="mini-ad">
+                      <div class="mini-ad-image">Local Service Ad</div>
+                      <strong>Fast junk removal this week</strong>
+                      <span>Request a quote in under 60 seconds.</span>
+                      <div class="mini-ad-button">Request Quote</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="demo-scene" data-scene="1">
+                  <h3>We launch it for you.</h3>
+                  <p>The campaign is published across publicly used platforms.</p>
+                  <div class="launch-dashboard">
+                    <div class="dash-card">
+                      <div class="dash-row"><span>Campaign</span><b>Local Service Leads</b></div>
+                      <div class="dash-row"><span>Audience</span><b>Local Market</b></div>
+                      <div class="dash-row"><span>Placements</span><b>Public Platforms</b></div>
+                      <div class="dash-row"><span>Status</span><b>Ready</b></div>
+                    </div>
+                    <div class="dash-line"></div>
+                    <div class="launch-button">Launch Campaign</div>
+                  </div>
+                </div>
+
+                <div class="demo-scene" data-scene="2">
+                  <h3>The lead comes in.</h3>
+                  <p>New inquiries are captured with the source and service need.</p>
+                  <div class="lead-view">
+                    <div class="phone-card">
+                      <div class="phone-top"><span>9:41</span><span>●●●</span></div>
+                      <div class="message-bubble">Hi, I need a garage cleanout quote for this week.</div>
+                    </div>
+                    <div class="lead-card">
+                      <small>New lead</small>
+                      <strong>Garage cleanout quote</strong>
+                      <div class="lead-meta">
+                        <span>Name <b>Mark T.</b></span>
+                        <span>Source <b>Ad Campaign</b></span>
+                        <span>Status <b>Captured</b></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="demo-scene" data-scene="3">
+                  <h3>The job gets booked.</h3>
+                  <p>Follow-up moves the prospect toward a quote, appointment, or booked job.</p>
+                  <div class="booked-view">
+                    <div class="text-thread">
+                      <div class="reply">We can get you on the schedule Friday at 2:00 PM.</div>
+                      <div class="reply gold">Yes, that works.</div>
+                    </div>
+                    <div class="calendar-card">
+                      <small>Booked</small>
+                      <strong>Quote window scheduled</strong>
+                      <div class="calendar-chip">
+                        <div><span>May</span><b>31</b></div>
+                        <div>2:00 PM<br>Estimate</div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </article>
 
-            <article class="stage-card stage-launch-card">
-              <span class="stage-label">Launch</span>
-              <h3>Campaign goes live.</h3>
-              <p>We place the campaign on publicly used platforms where prospects already spend time.</p>
-              <div class="platform-list">
-                <div><strong>Social</strong><span>Local audience</span></div>
-                <div><strong>Search</strong><span>High intent</span></div>
-                <div><strong>Local</strong><span>Community reach</span></div>
-              </div>
-            </article>
+              <div class="auto-cursor"></div>
+            </div>
 
-            <article class="stage-card stage-capture-card">
-              <span class="stage-label">Capture</span>
-              <h3>A lead comes in.</h3>
-              <p>The inquiry is captured, labeled, and routed into the lead system.</p>
-              <div class="lead-table">
-                <div><span>Source</span><strong>Ad Campaign</strong></div>
-                <div><span>Status</span><strong>New Lead</strong></div>
-                <div><span>Need</span><strong>Quote Request</strong></div>
-              </div>
-            </article>
-
-            <article class="stage-card stage-book-card">
-              <span class="stage-label">Book</span>
-              <h3>The job moves forward.</h3>
-              <p>Fast follow-up keeps the prospect from going cold.</p>
-              <div class="text-thread">
-                <span>Hi, I need a quote this week.</span>
-                <strong>Absolutely. What time works best?</strong>
-                <em>Booked: Friday • 2:00 PM</em>
-              </div>
-            </article>
+            <div class="video-caption">Automatic visual demo. Actual workflows vary by business.</div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="founder-note">
+      <div class="founder-grid">
+        <div class="founder-image-wrap">
+          <img src="Headshot%20Updated.png" alt="Hunter Holcomb, founder of MarketWon" class="founder-image">
+        </div>
+
+        <div class="founder-copy">
+          <div class="section-label">Founder Note</div>
+          <h2>A more practical way to think about marketing.</h2>
+          <p>
+            MarketWon was built for local service businesses that need more than random posts,
+            scattered ads, or a website that does not turn interest into real conversations.
+          </p>
+          <p>
+            The goal is simple: create better campaigns, capture leads properly, and follow up
+            before opportunities go cold. No confusing agency talk. No fake guarantees. Just a
+            clearer marketing system built around attention, response, and follow-up.
+          </p>
+          <p class="founder-signature">— Hunter Holcomb, Founder of MarketWon</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="problem">
+      <div class="split">
+        <div class="section-header">
+          <div class="section-label">The Problem</div>
+          <h2>Most businesses need a better path from attention to booked work.</h2>
+          <p>
+            Attention only matters when it turns into a lead, a conversation, and a clear next step.
+          </p>
+        </div>
+
+        <div class="problem-list">
+          <div class="problem-item">Ads or posts send people to weak pages.</div>
+          <div class="problem-item">Calls get missed and never followed up with.</div>
+          <div class="problem-item">Form leads sit too long before anyone responds.</div>
+          <div class="problem-item">Leads are scattered across inboxes, phones, and spreadsheets.</div>
+          <div class="problem-item">Past customers and old leads are not reactivated.</div>
         </div>
       </div>
     </section>
 
     <section id="what-we-do">
       <div class="section-header">
-        <span class="section-label">What We Do</span>
-        <h2>Ads first. Systems behind them.</h2>
-        <p>MarketWon handles the marketing flow from campaign creation to lead follow-up.</p>
+        <div class="section-label">What We Do</div>
+        <h2>Campaigns, conversion, and follow-up.</h2>
+        <p>
+          We build the ad flow and the system behind it.
+        </p>
       </div>
 
-      <div class="card-grid three">
-        <article class="card">
-          <h3>Ad Campaigns</h3>
-          <p>Strategy, creative direction, offers, and launch support.</p>
-        </article>
-        <article class="card">
+      <div class="grid-3">
+        <div class="card">
+          <h3>Campaign Strategy</h3>
+          <p>Offer positioning, messaging, campaign direction, and local service-business marketing strategy.</p>
+        </div>
+
+        <div class="card">
+          <h3>Ad Creative</h3>
+          <p>Ad concepts, copy, campaign angles, and creative direction built to get attention from the right customers.</p>
+        </div>
+
+        <div class="card">
+          <h3>Media & Distribution</h3>
+          <p>Organic campaigns, paid ad campaigns, local targeting, platform setup, and campaign launch support.</p>
+        </div>
+
+        <div class="card">
           <h3>Landing Pages</h3>
-          <p>Pages built to turn traffic into calls, forms, and quote requests.</p>
-        </article>
-        <article class="card">
-          <h3>Lead Follow-Up</h3>
-          <p>CRM setup, missed-call text-back, automation, and AI-assisted response.</p>
-        </article>
+          <p>Focused pages built to convert campaign traffic into calls, forms, quote requests, and booked conversations.</p>
+        </div>
+
+        <div class="card">
+          <h3>CRM & Lead Management</h3>
+          <p>Lead capture, pipeline organization, contact management, and simple systems for tracking opportunities.</p>
+        </div>
+
+        <div class="card">
+          <h3>Automation & AI Follow-Up</h3>
+          <p>Missed-call text-back, automated follow-up, reminders, review requests, and AI-assisted lead response.</p>
+        </div>
       </div>
     </section>
 
-    <section class="process-section" id="how-it-works">
+    <section class="lead-system" id="lead-system">
       <div class="section-header">
-        <span class="section-label">How It Works</span>
-        <h2>Built right. By MarketWon.</h2>
-        <p>We build the ad, launch the campaign, capture the lead, and help move the job forward.</p>
+        <div class="section-label">The MarketWon Lead System</div>
+        <h2>One path from campaign to booked work.</h2>
+        <p>
+          Interest gets captured, tracked, and followed up with before the opportunity goes cold.
+        </p>
       </div>
 
-      <div class="process-graphic-wrap">
-        <img src="Marketing%20Process%20Flow%20Infographic.png" alt="MarketWon process from ad creation to booked job" class="process-graphic" />
+      <div class="pathway">
+        <div class="path-step">
+          <span>Step 01</span>
+          <h3>Campaign</h3>
+        </div>
+        <div class="path-step">
+          <span>Step 02</span>
+          <h3>Landing Page</h3>
+        </div>
+        <div class="path-step">
+          <span>Step 03</span>
+          <h3>Lead Capture</h3>
+        </div>
+        <div class="path-step">
+          <span>Step 04</span>
+          <h3>CRM & Follow-Up</h3>
+        </div>
+        <div class="path-step">
+          <span>Step 05</span>
+          <h3>Reviews & Reactivation</h3>
+        </div>
+      </div>
+    </section>
+
+    <section class="process-visual-section" id="process-flow">
+      <div class="section-header">
+        <div class="section-label">How MarketWon Builds It</div>
+        <h2>Built right. By MarketWon.</h2>
+        <p>
+          We build the campaign flow from ad to lead to booked job.
+        </p>
+      </div>
+
+      <div class="process-visual-card">
+        <img src="Marketing%20Process%20Flow%20Infographic.png" alt="MarketWon four-step marketing process: build the ad, launch on publicly used platforms, capture the lead, and book the job.">
+      </div>
+    </section>
+
+    <section class="ai-booking" id="ai-booking">
+      <div class="ai-booking-grid">
+        <div>
+          <div class="section-label">AI Text-to-Book</div>
+          <h2>Ads create demand. Follow-up captures it.</h2>
+          <p>
+            When someone responds, the system can capture the request, start the conversation, and move the lead toward a booked quote or appointment.
+          </p>
+
+          <div class="booking-steps">
+            <div class="booking-step">
+              <div class="booking-step-number">01</div>
+              <div>
+                <strong>Lead comes in from an ad or landing page.</strong>
+                <span>The system captures the source, contact info, and request.</span>
+              </div>
+            </div>
+
+            <div class="booking-step">
+              <div class="booking-step-number">02</div>
+              <div>
+                <strong>AI-assisted follow-up starts fast.</strong>
+                <span>The lead gets a text that asks the right qualifying questions.</span>
+              </div>
+            </div>
+
+            <div class="booking-step">
+              <div class="booking-step-number">03</div>
+              <div>
+                <strong>The opportunity moves into your pipeline.</strong>
+                <span>Your team sees the conversation, status, and next step in one place.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="buttons">
+            <a class="btn btn-primary" href="mailto:contact@marketwonagency.com?subject=Build an AI Text-to-Book System">Build This System</a>
+            <a class="btn btn-secondary" href="#contact">Get a Free Review</a>
+          </div>
+        </div>
+
+        <div class="phone-demo-wrap">
+          <div class="phone-demo" aria-label="Stylized AI text-to-book conversation example">
+            <div class="phone-screen">
+              <div class="phone-header">
+                <div class="phone-header-top">
+                  <div class="phone-header-title">MarketWon Lead Flow</div>
+                  <div class="live-dot">Live</div>
+                </div>
+                <div class="phone-subtitle">Campaign lead · response started in 12 seconds</div>
+              </div>
+
+              <div class="chat-area">
+                <div class="message customer">Hi, I saw your ad. Can I get a quote for junk removal this week?</div>
+                <div class="message ai">Absolutely. What city are you in, and what needs to be removed?</div>
+                <div class="message customer">Frisco. Couch, boxes, and a garage cleanout.</div>
+                <div class="message ai">Got it. Are you available tomorrow between 1–3 PM for a quote window?</div>
+                <div class="message customer">Yes, that works.</div>
+                <div class="message ai">Perfect. You are in the pipeline for tomorrow from 1–3 PM. A team member will confirm the details.</div>
+                <div class="typing-row" aria-hidden="true"><span></span><span></span><span></span></div>
+              </div>
+
+              <div class="booking-summary">
+                <div class="booking-summary-title">Lead status</div>
+                <div class="summary-grid">
+                  <div class="summary-item">
+                    <small>Source</small>
+                    <strong>Campaign</strong>
+                  </div>
+                  <div class="summary-item">
+                    <small>Pipeline</small>
+                    <strong>Qualified</strong>
+                  </div>
+                  <div class="summary-item">
+                    <small>Service</small>
+                    <strong>Garage Cleanout</strong>
+                  </div>
+                  <div class="summary-item">
+                    <small>Next Step</small>
+                    <strong>Quote Window</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="demo-note">Stylized example. Actual workflows, wording, and booking rules vary by business.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="dark-section" id="how-we-work">
+      <div class="split">
+        <div class="section-header">
+          <div class="section-label">How We Work</div>
+          <h2>From attention to action.</h2>
+          <p>
+            A campaign is only valuable if the lead is captured, organized, and followed up with quickly.
+            MarketWon connects the marketing and the system behind it.
+          </p>
+        </div>
+
+        <div class="feature-list">
+          <div class="feature">
+            <strong>1. Build the campaign</strong>
+            <span>Define the offer, message, audience, and creative direction.</span>
+          </div>
+
+          <div class="feature">
+            <strong>2. Launch the funnel</strong>
+            <span>Connect campaigns to landing pages, forms, calls, and quote-request paths.</span>
+          </div>
+
+          <div class="feature">
+            <strong>3. Capture the lead</strong>
+            <span>Route new inquiries into a CRM so they are not lost or forgotten.</span>
+          </div>
+
+          <div class="feature">
+            <strong>4. Follow up and optimize</strong>
+            <span>Use automations, reminders, AI workflows, and reporting to improve performance over time.</span>
+          </div>
+        </div>
       </div>
     </section>
 
     <section id="systems">
       <div class="section-header">
-        <span class="section-label">Systems We Build</span>
-        <h2>Campaign systems for service businesses.</h2>
-        <p>Each piece is built to help turn attention into calls, quote requests, and booked work.</p>
+        <div class="section-label">Systems We Build</div>
+        <h2>Campaign systems for service businesses that need more opportunities.</h2>
+        <p>
+          We build the marketing pieces that help local businesses create demand, capture leads, and improve follow-up.
+        </p>
       </div>
 
-      <div class="card-grid three compact">
-        <article class="card"><h3>Local Lead Campaigns</h3><p>Offers and ad concepts built around service demand.</p></article>
-        <article class="card"><h3>Quote Request Funnels</h3><p>Landing pages and forms that collect the right details.</p></article>
-        <article class="card"><h3>Missed-Call Recovery</h3><p>Text-back systems for calls that do not get answered.</p></article>
-        <article class="card"><h3>Follow-Up Workflows</h3><p>Text, email, and reminders that keep leads warm.</p></article>
-        <article class="card"><h3>Review Requests</h3><p>Simple review flows after the job is complete.</p></article>
-        <article class="card"><h3>Reactivation Campaigns</h3><p>Reconnect with old leads and past customers.</p></article>
-      </div>
-    </section>
-
-    <section class="section-dark why-section">
-      <div class="section-header light">
-        <span class="section-label">Why It Matters</span>
-        <h2>Marketing should not stop at the ad.</h2>
-        <p>The click is only the start. Leads still need to be captured, organized, and followed up with fast.</p>
-      </div>
-
-      <div class="card-grid three">
-        <article class="dark-card"><h3>Campaign-first</h3><p>Ads stay at the center of the strategy.</p></article>
-        <article class="dark-card"><h3>Lead-focused</h3><p>Every campaign needs a clean path for inquiries.</p></article>
-        <article class="dark-card"><h3>Follow-up ready</h3><p>Systems help reduce missed opportunities.</p></article>
-      </div>
-    </section>
-
-    <section id="founder">
-      <div class="founder-grid">
-        <div class="founder-image-wrap">
-          <img src="Headshot%20Updated.png" alt="Hunter Holcomb, founder of MarketWon" class="founder-image" />
+      <div class="grid-3">
+        <div class="card system-card">
+          <div class="number">System 01</div>
+          <h3>Local Lead Campaigns</h3>
+          <p>Campaigns designed to generate calls, forms, quote requests, and local service inquiries.</p>
         </div>
 
-        <div class="founder-copy">
-          <span class="section-label">Founder Note</span>
-          <h2>A practical marketing partner.</h2>
-          <p>MarketWon was built for service businesses that need ads, lead capture, and follow-up without confusing agency talk.</p>
-          <p>The goal is simple: build better campaigns, capture leads properly, and follow up before opportunities go cold.</p>
-          <p class="founder-signature">— Hunter Holcomb, Founder of MarketWon</p>
+        <div class="card system-card">
+          <div class="number">System 02</div>
+          <h3>Quote Request Funnels</h3>
+          <p>Landing pages and forms structured to collect the right information before the sales conversation.</p>
+        </div>
+
+        <div class="card system-card">
+          <div class="number">System 03</div>
+          <h3>Missed-Call Recovery</h3>
+          <p>Systems that help businesses respond when a potential customer calls and nobody answers.</p>
+        </div>
+
+        <div class="card system-card">
+          <div class="number">System 04</div>
+          <h3>Follow-Up Workflows</h3>
+          <p>Text, email, reminders, and pipeline updates that keep leads from going cold.</p>
+        </div>
+
+        <div class="card system-card">
+          <div class="number">System 05</div>
+          <h3>Review & Reputation Flows</h3>
+          <p>Simple review request systems that help businesses build trust after the job is complete.</p>
+        </div>
+
+        <div class="card system-card">
+          <div class="number">System 06</div>
+          <h3>Reactivation Campaigns</h3>
+          <p>Campaigns built to reconnect with old leads, past customers, and inactive opportunities.</p>
         </div>
       </div>
     </section>
 
-    <section class="audience-section">
+    <section class="dark-section" id="why">
       <div class="section-header">
-        <span class="section-label">Who We Help</span>
-        <h2>Built for local service businesses.</h2>
-        <p>Especially businesses where every missed call or slow response can cost a job.</p>
+        <div class="section-label">Why MarketWon</div>
+        <h2>Marketing should not stop at the ad.</h2>
+        <p>
+          Many businesses focus only on getting attention. MarketWon focuses on what happens after the attention:
+          capture, speed, organization, and follow-up.
+        </p>
       </div>
 
-      <div class="chip-row" aria-label="Example business types">
-        <span>Junk Removal</span>
-        <span>Moving Companies</span>
-        <span>Landscaping</span>
-        <span>Plumbing</span>
-        <span>Painting</span>
-        <span>Contractors</span>
-        <span>Home Services</span>
+      <div class="grid-3">
+        <div class="dark-card">
+          <h3>Ads-first marketing focus</h3>
+          <p>Campaigns are central to the strategy, supported by landing pages, lead systems, and follow-up workflows.</p>
+        </div>
+
+        <div class="dark-card">
+          <h3>Built for local services</h3>
+          <p>Designed for businesses that depend on calls, quote requests, appointments, and fast customer response.</p>
+        </div>
+
+        <div class="dark-card">
+          <h3>Systems behind the campaign</h3>
+          <p>We help organize and follow up with leads so businesses do not lose opportunities after the first click or call.</p>
+        </div>
       </div>
     </section>
 
     <section id="packages">
       <div class="section-header">
-        <span class="section-label">Starting Points</span>
-        <h2>Start where your business is now.</h2>
-        <p>Simple entry points that can expand as your marketing and lead flow grow.</p>
+        <div class="section-label">Starting Points</div>
+        <h2>Start with the system your business needs now.</h2>
+        <p>
+          These starting points help smaller businesses begin with practical marketing support, then upgrade as lead flow increases.
+        </p>
       </div>
 
-      <div class="card-grid four package-grid">
-        <article class="card package-card">
+      <div class="grid-4">
+        <div class="card package-card">
           <span class="badge">Starter</span>
           <h3>Local Launch Kit</h3>
+          <p>Basic online presence and lead organization.</p>
           <ul>
             <li>Landing page</li>
             <li>Google Business Profile setup</li>
             <li>Basic CRM lead management</li>
           </ul>
-        </article>
+        </div>
 
-        <article class="card package-card">
+        <div class="card package-card">
           <span class="badge">Campaigns</span>
           <h3>Ad Launch System</h3>
+          <p>Campaign setup and lead capture support.</p>
           <ul>
             <li>Campaign strategy</li>
-            <li>Ad creative direction</li>
-            <li>Lead capture setup</li>
+            <li>Offer positioning</li>
+            <li>Landing page or form connection</li>
           </ul>
-        </article>
+        </div>
 
-        <article class="card package-card">
+        <div class="card package-card">
           <span class="badge">Follow-Up</span>
           <h3>Lead Response System</h3>
+          <p>Lead response and automation support.</p>
           <ul>
             <li>Missed-call text-back</li>
             <li>CRM pipeline</li>
-            <li>Basic automation</li>
+            <li>Basic follow-up automation</li>
           </ul>
-        </article>
+        </div>
 
-        <article class="card package-card">
-          <span class="badge">AI</span>
+        <div class="card package-card">
+          <span class="badge">AI-Powered</span>
           <h3>AI Growth Engine</h3>
+          <p>Marketing, automation, and AI-assisted follow-up.</p>
           <ul>
-            <li>AI-assisted response</li>
+            <li>Campaign optimization</li>
+            <li>AI-assisted lead follow-up</li>
             <li>Review automation</li>
-            <li>Monthly optimization</li>
           </ul>
-        </article>
+        </div>
       </div>
 
-      <p class="small-note">Some campaigns can launch without paid platform ad spend. If paid ads are used, client ad spend is separate from MarketWon’s service fee unless otherwise agreed in writing.</p>
+      <p class="small-note">
+        MarketWon can start with ad-style campaigns that do not require platform ad spend. If paid platform ads are used later,
+        ad spend is separate from MarketWon’s service fee unless otherwise agreed in writing.
+      </p>
     </section>
 
-    <section class="contact-section" id="contact">
+    <section class="contact" id="contact">
       <div class="contact-box">
-        <h2>Let’s find where your marketing is losing jobs.</h2>
-        <p>Request a free review of your ads, landing page, lead capture, and follow-up process.</p>
-        <div class="button-row">
-          <a class="btn btn-primary" href="mailto:contact@marketwonagency.com?subject=Free Marketing Review Request">Email MarketWon</a>
+        <div class="section-label">Free Lead & Marketing Review</div>
+        <h2>Let’s look at where your marketing is losing opportunities.</h2>
+        <p>
+          Request a free review. We will look at your campaigns, landing page, lead capture,
+          CRM setup, and follow-up process.
+        </p>
+
+        <div class="review-list">
+          <div>Campaign direction</div>
+          <div>Landing page or website</div>
+          <div>Lead capture process</div>
+          <div>Follow-up gaps</div>
+          <div>CRM/automation needs</div>
+          <div>Best next step</div>
+        </div>
+
+        <div class="buttons">
+          <a class="btn btn-primary" href="mailto:contact@marketwonagency.com?subject=Free Lead and Marketing Review Request">Email MarketWon</a>
           <a class="btn btn-secondary" href="mailto:contact@marketwonagency.com?subject=Question About MarketWon Services">Ask a Question</a>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <p>© 2026 MarketWon LLC. MarketWon does not guarantee rankings, leads, booked jobs, revenue, customer responses, or ad performance. Results depend on the business, market, offer, budget, platform, competition, and follow-up process.</p>
+  <footer>
+    <p>
+      © 2026 MarketWon LLC. MarketWon does not guarantee rankings, leads, booked jobs, revenue,
+      customer responses, or ad performance. Results depend on the business, market, offer, budget,
+      advertising platform, competition, and follow-up process.
+    </p>
   </footer>
+
+  <script>
+    (function () {
+      const stage = document.querySelector('.campaign-stage');
+      const tabs = Array.from(document.querySelectorAll('.step-tab'));
+      const scenes = Array.from(document.querySelectorAll('.demo-scene'));
+
+      if (!stage || tabs.length === 0 || scenes.length === 0) return;
+
+      let currentStep = 0;
+      let timer;
+
+      function showStep(index) {
+        currentStep = index;
+        stage.classList.remove('step-0', 'step-1', 'step-2', 'step-3');
+        stage.classList.add(`step-${index}`);
+
+        tabs.forEach((tab, tabIndex) => {
+          tab.classList.toggle('is-active', tabIndex === index);
+        });
+
+        scenes.forEach((scene, sceneIndex) => {
+          scene.classList.toggle('is-active', sceneIndex === index);
+        });
+      }
+
+      function startAutoDemo() {
+        window.clearInterval(timer);
+        timer = window.setInterval(() => {
+          showStep((currentStep + 1) % scenes.length);
+        }, 2400);
+      }
+
+      tabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          const nextStep = Number(tab.dataset.step || 0);
+          showStep(nextStep);
+          startAutoDemo();
+        });
+      });
+
+      showStep(0);
+      startAutoDemo();
+    }());
+  </script>
+
 </body>
 </html>
