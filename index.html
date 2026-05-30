@@ -267,7 +267,7 @@
     }
 
     /* =========================================================
-       05. CSS-ONLY CLICK-THROUGH HERO DEMO
+       05. AUTOMATED HERO DEMO
     ========================================================= */
     .flow-demo {
       position: relative;
@@ -283,7 +283,7 @@
       position: absolute;
       inset: -1px;
       border-radius: 30px;
-      background: linear-gradient(135deg, rgba(199, 163, 74, 0.4), transparent 35%, rgba(255, 255, 255, 0.12));
+      background: linear-gradient(135deg, rgba(199, 163, 74, 0.42), transparent 36%, rgba(255, 255, 255, 0.12));
       pointer-events: none;
       opacity: 0.55;
     }
@@ -318,22 +318,20 @@
       text-transform: uppercase;
     }
 
-    .flow-demo input {
-      position: absolute;
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .demo-tabs {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
+    .demo-steps-wrap {
+      position: relative;
       padding: 12px;
       background: rgba(255, 255, 255, 0.03);
     }
 
-    .demo-tabs label {
-      cursor: pointer;
+    .demo-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+
+    .demo-step {
+      position: relative;
       text-align: center;
       color: var(--light-muted);
       font-size: 0.78rem;
@@ -342,16 +340,140 @@
       border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 999px;
       padding: 10px 8px;
-      transition: all 0.2s ease;
+      overflow: hidden;
+      animation: stepActive 12s infinite;
     }
 
-    #step-create:checked ~ .demo-tabs label[for="step-create"],
-    #step-launch:checked ~ .demo-tabs label[for="step-launch"],
-    #step-capture:checked ~ .demo-tabs label[for="step-capture"],
-    #step-book:checked ~ .demo-tabs label[for="step-book"] {
-      background: var(--gold);
-      color: var(--black);
-      border-color: var(--gold);
+    .demo-step::after {
+      content: "";
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      bottom: 5px;
+      height: 2px;
+      border-radius: 999px;
+      background: rgba(7, 9, 13, 0.28);
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: stepProgress 12s infinite linear;
+    }
+
+    .demo-step:nth-child(1),
+    .demo-step:nth-child(1)::after,
+    .stage-create {
+      animation-delay: 0s;
+    }
+
+    .demo-step:nth-child(2),
+    .demo-step:nth-child(2)::after,
+    .stage-launch {
+      animation-delay: 3s;
+    }
+
+    .demo-step:nth-child(3),
+    .demo-step:nth-child(3)::after,
+    .stage-capture {
+      animation-delay: 6s;
+    }
+
+    .demo-step:nth-child(4),
+    .demo-step:nth-child(4)::after,
+    .stage-book {
+      animation-delay: 9s;
+    }
+
+    .auto-cursor {
+      position: absolute;
+      left: calc(12px + 12.5% - 9px);
+      top: 43px;
+      width: 18px;
+      height: 18px;
+      z-index: 2;
+      transform: rotate(-28deg);
+      filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.32));
+      animation: cursorMove 12s infinite;
+    }
+
+    .auto-cursor::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--white);
+      clip-path: polygon(0 0, 100% 45%, 55% 57%, 72% 100%, 52% 100%, 36% 63%, 0 88%);
+    }
+
+    .auto-cursor::after {
+      content: "";
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      left: -3px;
+      top: -3px;
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      opacity: 0;
+      animation: cursorClick 12s infinite;
+    }
+
+    @keyframes stepActive {
+      0%, 22% {
+        background: var(--gold);
+        color: var(--black);
+        border-color: var(--gold);
+      }
+      27%, 100% {
+        background: transparent;
+        color: var(--light-muted);
+        border-color: rgba(255, 255, 255, 0.1);
+      }
+    }
+
+    @keyframes stepProgress {
+      0% {
+        transform: scaleX(0);
+        opacity: 1;
+      }
+      22% {
+        transform: scaleX(1);
+        opacity: 1;
+      }
+      27%, 100% {
+        transform: scaleX(0);
+        opacity: 0;
+      }
+    }
+
+    @keyframes cursorMove {
+      0%, 20% {
+        left: calc(12px + 12.5% - 9px);
+      }
+      25%, 45% {
+        left: calc(12px + 37.5% - 9px);
+      }
+      50%, 70% {
+        left: calc(12px + 62.5% - 9px);
+      }
+      75%, 95% {
+        left: calc(12px + 87.5% - 9px);
+      }
+      100% {
+        left: calc(12px + 12.5% - 9px);
+      }
+    }
+
+    @keyframes cursorClick {
+      0%, 5%, 25%, 30%, 50%, 55%, 75%, 80% {
+        opacity: 0;
+        transform: scale(0.6);
+      }
+      7%, 32%, 57%, 82% {
+        opacity: 0.75;
+        transform: scale(1);
+      }
+      12%, 37%, 62%, 87% {
+        opacity: 0;
+        transform: scale(1.28);
+      }
     }
 
     .demo-stage {
@@ -366,16 +488,18 @@
       opacity: 0;
       transform: translateY(14px) scale(0.98);
       pointer-events: none;
-      transition: opacity 0.28s ease, transform 0.28s ease;
+      animation: panelCycle 12s infinite;
     }
 
-    #step-create:checked ~ .demo-stage .stage-create,
-    #step-launch:checked ~ .demo-stage .stage-launch,
-    #step-capture:checked ~ .demo-stage .stage-capture,
-    #step-book:checked ~ .demo-stage .stage-book {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-      pointer-events: auto;
+    @keyframes panelCycle {
+      0%, 22% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+      27%, 100% {
+        opacity: 0;
+        transform: translateY(14px) scale(0.98);
+      }
     }
 
     .mock-card {
@@ -521,6 +645,27 @@
     .booked-card span {
       color: var(--gold);
       font-weight: 900;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .demo-step,
+      .demo-step::after,
+      .stage-panel,
+      .auto-cursor,
+      .auto-cursor::after {
+        animation: none !important;
+      }
+
+      .stage-create {
+        opacity: 1;
+        transform: none;
+      }
+
+      .demo-step:first-child {
+        background: var(--gold);
+        color: var(--black);
+        border-color: var(--gold);
+      }
     }
 
     /* =========================================================
@@ -728,8 +873,12 @@
         width: 166px;
       }
 
-      .demo-tabs {
+      .demo-steps {
         grid-template-columns: repeat(2, 1fr);
+      }
+
+      .auto-cursor {
+        display: none;
       }
 
       .demo-stage {
@@ -752,6 +901,7 @@
     <nav aria-label="Main navigation">
       <a href="#what-we-do">What We Do</a>
       <a href="#how-it-works">How It Works</a>
+      <a href="#systems">Systems</a>
       <a href="#founder">Founder</a>
       <a href="#packages">Starting Points</a>
       <a class="nav-cta" href="#contact">Let’s Talk</a>
@@ -762,7 +912,7 @@
     <section class="hero">
       <div class="hero-copy">
         <div class="eyebrow">Ads • Lead Capture • Follow-Up</div>
-        <h1>We build the ads that bring customers in.</h1>
+        <h1>Ads that create demand. Systems that capture it.</h1>
         <p>
           MarketWon creates the campaign, landing page, and follow-up system that helps turn attention into booked work.
         </p>
@@ -776,19 +926,17 @@
         <div class="demo-inner">
           <div class="demo-header">
             <div class="demo-title">MarketWon Campaign Flow</div>
-            <div class="demo-status">Click a step</div>
+            <div class="demo-status">Auto demo</div>
           </div>
 
-          <input id="step-create" name="flow-step" type="radio" checked />
-          <input id="step-launch" name="flow-step" type="radio" />
-          <input id="step-capture" name="flow-step" type="radio" />
-          <input id="step-book" name="flow-step" type="radio" />
-
-          <div class="demo-tabs">
-            <label for="step-create">01 Create</label>
-            <label for="step-launch">02 Launch</label>
-            <label for="step-capture">03 Capture</label>
-            <label for="step-book">04 Book</label>
+          <div class="demo-steps-wrap" aria-hidden="true">
+            <div class="demo-steps">
+              <div class="demo-step">01 Create</div>
+              <div class="demo-step">02 Launch</div>
+              <div class="demo-step">03 Capture</div>
+              <div class="demo-step">04 Book</div>
+            </div>
+            <span class="auto-cursor"></span>
           </div>
 
           <div class="demo-stage">
@@ -885,6 +1033,43 @@
 
       <div class="process-graphic-wrap">
         <img src="Marketing%20Process%20Flow%20Infographic.png" alt="MarketWon process from ad creation to booked job" />
+      </div>
+    </section>
+
+
+
+    <section id="systems">
+      <div class="section-header">
+        <div class="section-label">Systems We Build</div>
+        <h2>Campaign systems for service businesses.</h2>
+        <p>MarketWon builds the pieces that help turn attention into calls, quote requests, and booked work.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>Local Lead Campaigns</h3>
+          <p>Ad concepts, offers, and creative direction built around local service demand.</p>
+        </div>
+        <div class="card">
+          <h3>Quote Request Funnels</h3>
+          <p>Landing pages and forms that collect the right details before the sales conversation.</p>
+        </div>
+        <div class="card">
+          <h3>Missed-Call Recovery</h3>
+          <p>Text-back and follow-up systems for prospects who call when nobody answers.</p>
+        </div>
+        <div class="card">
+          <h3>Follow-Up Workflows</h3>
+          <p>Simple text, email, and reminder flows that keep leads from going cold.</p>
+        </div>
+        <div class="card">
+          <h3>Review Requests</h3>
+          <p>Review flows that help businesses build trust after the job is complete.</p>
+        </div>
+        <div class="card">
+          <h3>Reactivation Campaigns</h3>
+          <p>Campaigns that reconnect with old leads, past customers, and inactive opportunities.</p>
+        </div>
       </div>
     </section>
 
