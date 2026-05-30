@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MarketWon Agency | Marketing Systems for Local Service Businesses</title>
-  <meta name="description" content="MarketWon helps local service businesses capture, organize, and convert more leads through marketing, CRM systems, automations, and AI follow-up." />
+  <title>MarketWon Agency | Paid Ads & Lead Systems for Local Service Businesses</title>
+  <meta name="description" content="MarketWon helps local service businesses generate, capture, and convert more leads through paid ads, landing pages, CRM systems, automations, and AI follow-up." />
 
   <style>
     :root {
@@ -15,12 +15,17 @@
       --muted: #64748b;
       --white: #ffffff;
       --border: #e2e8f0;
+      --soft-gold: #fef3c7;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -62,13 +67,13 @@
     }
 
     .hero {
-      padding: 90px 8%;
+      padding: 95px 8%;
       background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
       color: var(--white);
     }
 
     .hero-content {
-      max-width: 850px;
+      max-width: 920px;
     }
 
     .eyebrow {
@@ -90,7 +95,7 @@
     .hero p {
       font-size: 1.25rem;
       color: #cbd5e1;
-      max-width: 760px;
+      max-width: 820px;
       margin-bottom: 34px;
     }
 
@@ -119,12 +124,16 @@
       color: var(--white);
     }
 
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
     section {
-      padding: 70px 8%;
+      padding: 72px 8%;
     }
 
     .section-title {
-      max-width: 760px;
+      max-width: 800px;
       margin-bottom: 38px;
     }
 
@@ -143,6 +152,12 @@
     .grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
       gap: 22px;
     }
 
@@ -166,7 +181,7 @@
 
     .badge {
       display: inline-block;
-      background: #fef3c7;
+      background: var(--soft-gold);
       color: #92400e;
       padding: 6px 10px;
       border-radius: 999px;
@@ -197,12 +212,20 @@
       color: var(--white);
     }
 
+    .process {
+      background: var(--white);
+    }
+
+    .process-step {
+      border-left: 4px solid var(--gold);
+    }
+
     .contact-box {
       background: var(--white);
       border-radius: 20px;
       padding: 34px;
       border: 1px solid var(--border);
-      max-width: 800px;
+      max-width: 850px;
       box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
     }
 
@@ -211,12 +234,24 @@
       margin-bottom: 22px;
     }
 
+    .note {
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
     footer {
       padding: 28px 8%;
       background: var(--white);
       border-top: 1px solid var(--border);
       color: var(--muted);
       font-size: 0.9rem;
+    }
+
+    @media (max-width: 1050px) {
+      .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     @media (max-width: 850px) {
@@ -231,7 +266,8 @@
         margin-right: 18px;
       }
 
-      .grid {
+      .grid,
+      .grid-4 {
         grid-template-columns: 1fr;
       }
 
@@ -246,6 +282,7 @@
   <header>
     <div class="logo">Market<span>Won</span></div>
     <nav>
+      <a href="#ads">Paid Ads</a>
       <a href="#services">Services</a>
       <a href="#packages">Packages</a>
       <a href="#contact">Contact</a>
@@ -255,11 +292,11 @@
   <main>
     <section class="hero">
       <div class="hero-content">
-        <div class="eyebrow">Marketing Systems • CRM • Automations • AI Follow-Up</div>
-        <h1>Marketing systems that help local service businesses capture, organize, and convert more leads.</h1>
+        <div class="eyebrow">Paid Ads • Landing Pages • CRM • Automations • AI Follow-Up</div>
+        <h1>Paid ads and marketing systems that help local service businesses generate, capture, and convert more leads.</h1>
         <p>
-          MarketWon helps small and mid-sized businesses improve lead response, CRM organization,
-          follow-up, and marketing operations without overcomplicating the process.
+          MarketWon helps service businesses run better ads, capture more inquiries, respond faster,
+          and follow up consistently through landing pages, CRM systems, automations, and AI-powered workflows.
         </p>
         <div class="buttons">
           <a class="btn btn-primary" href="mailto:contact@marketwonagency.com?subject=Free Business Review Request">Get a Free Business Review</a>
@@ -268,11 +305,71 @@
       </div>
     </section>
 
+    <section id="ads">
+      <div class="section-title">
+        <h2>Specializing in paid ads for local service businesses</h2>
+        <p>
+          Most businesses do not just need more traffic. They need a system that turns ad traffic into actual conversations,
+          quote requests, booked appointments, and follow-up opportunities.
+        </p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Ad Campaign Setup</h3>
+          <p>Campaign structure, targeting, creative direction, offer positioning, and launch preparation for local service businesses.</p>
+        </div>
+        <div class="card">
+          <h3>Landing Page Connection</h3>
+          <p>Ad traffic should go somewhere built to convert. We connect campaigns to focused landing pages, forms, and calls-to-action.</p>
+        </div>
+        <div class="card">
+          <h3>Lead Tracking & Follow-Up</h3>
+          <p>Leads should not disappear in inboxes, missed calls, or spreadsheets. We help route leads into a CRM and follow-up process.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="process">
+      <div class="section-title">
+        <h2>The MarketWon lead system</h2>
+        <p>
+          Ads work better when the full system is built around speed, organization, and consistent follow-up.
+        </p>
+      </div>
+
+      <div class="grid-4">
+        <div class="card process-step">
+          <span class="badge">Step 1</span>
+          <h3>Run Ads</h3>
+          <p>Launch targeted paid campaigns designed to create local service inquiries.</p>
+        </div>
+
+        <div class="card process-step">
+          <span class="badge">Step 2</span>
+          <h3>Capture Leads</h3>
+          <p>Send traffic to a landing page, call button, form, or lead capture system.</p>
+        </div>
+
+        <div class="card process-step">
+          <span class="badge">Step 3</span>
+          <h3>Organize in CRM</h3>
+          <p>Track lead information, status, follow-up, and pipeline movement.</p>
+        </div>
+
+        <div class="card process-step">
+          <span class="badge">Step 4</span>
+          <h3>Follow Up Fast</h3>
+          <p>Use text, email, reminders, and AI-assisted workflows to reduce missed opportunities.</p>
+        </div>
+      </div>
+    </section>
+
     <section>
       <div class="section-title">
         <h2>Built for local service businesses</h2>
         <p>
-          We help businesses that need better lead capture, faster response, cleaner follow-up,
+          We help businesses that need better lead generation, faster response, cleaner follow-up,
           and a more organized system for managing prospects.
         </p>
       </div>
@@ -280,11 +377,11 @@
       <div class="grid">
         <div class="card">
           <h3>Junk Removal</h3>
-          <p>Capture new inquiries, organize jobs, and reduce missed opportunities from slow response times.</p>
+          <p>Generate inquiries, capture quote requests, organize jobs, and reduce missed opportunities from slow response times.</p>
         </div>
         <div class="card">
           <h3>Moving Companies</h3>
-          <p>Improve lead intake, follow-up, quote requests, and customer communication.</p>
+          <p>Improve lead intake, follow-up, quote requests, and customer communication from ad campaigns and inbound leads.</p>
         </div>
         <div class="card">
           <h3>Home Services</h3>
@@ -297,23 +394,23 @@
       <div class="section-title">
         <h2>What MarketWon helps with</h2>
         <p>
-          We build practical marketing and lead management systems that help businesses respond faster
-          and follow up more consistently.
+          We build practical marketing and lead management systems that help businesses generate demand,
+          respond faster, and follow up more consistently.
         </p>
       </div>
 
       <div class="grid">
         <div class="card">
-          <h3>CRM Setup</h3>
-          <p>Lead capture, pipeline organization, contact management, and simple lead tracking.</p>
+          <h3>Paid Advertising</h3>
+          <p>Facebook Ads, Instagram Ads, Google Search Ads, local lead campaigns, retargeting, and campaign optimization.</p>
         </div>
         <div class="card">
-          <h3>Automations</h3>
-          <p>Missed-call text-back, instant lead response, basic follow-up, and appointment reminders.</p>
+          <h3>Landing Pages</h3>
+          <p>Simple conversion-focused pages designed to turn traffic into calls, forms, quote requests, and booked conversations.</p>
         </div>
         <div class="card">
-          <h3>AI Follow-Up</h3>
-          <p>AI-assisted lead response, smarter qualification, review automation, and monthly optimization.</p>
+          <h3>CRM & Automations</h3>
+          <p>Lead capture, pipeline organization, missed-call text-back, basic follow-up, appointment reminders, and AI workflows.</p>
         </div>
       </div>
     </section>
@@ -322,12 +419,12 @@
       <div class="section-title">
         <h2>Simple starting packages</h2>
         <p>
-          Start with the level that fits your business. Upgrade when you are ready for more automation,
+          Start with the level that fits your business. Upgrade when you are ready for ads, automation,
           faster response, and AI-assisted follow-up.
         </p>
       </div>
 
-      <div class="grid">
+      <div class="grid-4">
         <div class="card">
           <span class="badge">Starter</span>
           <h3>Local Launch Kit</h3>
@@ -335,25 +432,35 @@
         </div>
 
         <div class="card">
-          <span class="badge">Growth</span>
+          <span class="badge">Ads</span>
+          <h3>Ad Launch System</h3>
+          <p>Paid ad setup, landing page or lead form connection, tracking setup, and campaign launch support.</p>
+        </div>
+
+        <div class="card">
+          <span class="badge">Follow-Up</span>
           <h3>Lead Response System</h3>
-          <p>Missed-call text-back, instant lead response, and basic automated follow-up.</p>
+          <p>Missed-call text-back, instant lead response, CRM pipeline, and basic automated follow-up.</p>
         </div>
 
         <div class="card">
           <span class="badge">AI-Powered</span>
-          <h3>AI Follow-Up Engine</h3>
-          <p>AI-assisted lead response, lead qualification, review automation, and monthly optimization.</p>
+          <h3>AI Growth Engine</h3>
+          <p>Paid ads, AI-assisted follow-up, lead qualification, review automation, CRM optimization, and monthly improvement.</p>
         </div>
       </div>
+
+      <p class="note">
+        Client ad spend is separate from MarketWon’s service fee and is typically paid directly to the advertising platform.
+      </p>
     </section>
 
     <section id="contact">
       <div class="contact-box">
         <h2>Get a free business review</h2>
         <p>
-          Tell us what you are trying to fix: missed calls, slow follow-up, poor lead organization,
-          no CRM, weak landing page, or inconsistent marketing.
+          Tell us what you are trying to fix: not enough leads, weak ads, missed calls, slow follow-up,
+          poor lead organization, no CRM, weak landing page, or inconsistent marketing.
         </p>
         <a class="btn btn-primary" href="mailto:contact@marketwonagency.com?subject=Free Business Review Request">Email contact@marketwonagency.com</a>
       </div>
@@ -364,7 +471,7 @@
     <p>
       © 2026 MarketWon LLC. MarketWon does not guarantee rankings, leads, booked jobs, revenue,
       customer responses, or ad performance. Results depend on the business, market, offer, budget,
-      and follow-up process.
+      advertising platform, competition, and follow-up process.
     </p>
   </footer>
 </body>
