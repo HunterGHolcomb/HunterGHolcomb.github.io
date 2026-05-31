@@ -6,7 +6,7 @@
 
   <title>MarketWon Agency | Ads, Marketing & Lead Systems</title>
   <meta name="description" content="MarketWon is a marketing company that helps local service businesses build ad campaigns, landing pages, CRM systems, and follow-up workflows that turn attention into real opportunities." />
-  <link rel="icon" href="MarketWon%20MW%20Logo.png" type="image/png" />
+  <link rel="icon" href="marketwon-mark.svg" type="image/svg+xml" />
 
   <style>
     :root {
@@ -47,16 +47,17 @@
     }
 
     header {
-      background: rgba(247, 243, 234, 0.96);
-      border-bottom: 1px solid var(--border);
-      padding: 18px 8%;
+      background: rgba(247, 243, 234, 0.94);
+      border-bottom: 1px solid rgba(231, 222, 201, 0.8);
+      padding: 6px 8%;
       display: flex;
       align-items: center;
       justify-content: space-between;
       position: sticky;
       top: 0;
       z-index: 50;
-      backdrop-filter: blur(10px);
+      backdrop-filter: blur(12px);
+      min-height: 62px;
     }
 
     .brand {
@@ -65,12 +66,14 @@
       gap: 12px;
       text-decoration: none;
       color: var(--black);
+      line-height: 0;
     }
 
     .site-logo {
-      width: 218px;
+      width: 172px;
       height: auto;
       display: block;
+      object-fit: contain;
     }
 
     .brand-mark {
@@ -112,7 +115,7 @@
     nav {
       display: flex;
       align-items: center;
-      gap: 22px;
+      gap: 18px;
       flex-wrap: wrap;
     }
 
@@ -131,7 +134,7 @@
     .nav-cta {
       background: var(--black);
       color: var(--white);
-      padding: 10px 15px;
+      padding: 9px 14px;
       border-radius: 999px;
     }
 
@@ -1513,52 +1516,6 @@
       color: var(--gold);
     }
 
-
-    .footer-contact {
-      min-width: 250px;
-      display: grid;
-      gap: 8px;
-      color: var(--light-muted);
-    }
-
-    .footer-contact strong {
-      color: var(--white);
-      font-size: 0.95rem;
-    }
-
-    .footer-contact a,
-    .footer-contact span {
-      color: var(--light-muted);
-      text-decoration: none;
-      font-weight: 700;
-    }
-
-    .footer-contact a:hover {
-      color: var(--gold);
-    }
-
-    .social-links {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 4px;
-    }
-
-    .social-links a {
-      color: var(--light-muted);
-      text-decoration: none;
-      font-weight: 800;
-    }
-
-    .social-links a:hover {
-      color: var(--gold);
-    }
-
-    .social-links a[aria-disabled="true"] {
-      opacity: 0.55;
-      cursor: default;
-    }
-
     @media (prefers-reduced-motion: reduce) {
       *,
       *::before,
@@ -1596,11 +1553,13 @@
       header {
         flex-direction: column;
         align-items: flex-start;
-        gap: 14px;
+        gap: 10px;
+        padding: 8px 6%;
       }
 
       .site-logo {
-        width: 190px;
+        width: 168px;
+        height: 48px;
       }
 
       nav {
@@ -1675,7 +1634,7 @@
 <body>
   <header>
     <a class="brand" href="#top" aria-label="MarketWon homepage">
-      <img src="MarketWon%20Agency%20Logo.png" alt="MarketWon Marketing Agency" class="site-logo">
+      <img src="marketwon-logo-transparent.png" alt="MarketWon Marketing Agency" class="site-logo">
     </a>
 
     <nav>
@@ -2264,18 +2223,6 @@
           customer responses, or ad performance. Results depend on the business, market, offer, budget,
           advertising platform, competition, and follow-up process.
         </p>
-      </div>
-
-      <div class="footer-contact" aria-label="MarketWon contact information">
-        <strong>Contact MarketWon</strong>
-        <a href="tel:+14695251754">(469) 525-1754</a>
-        <a href="mailto:contact@marketwonagency.com">contact@marketwonagency.com</a>
-        <div class="social-links" aria-label="MarketWon social links">
-          <a href="https://www.linkedin.com/in/hunter-holcomb/" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="https://www.instagram.com/hunterholcomb_/" target="_blank" rel="noopener">Instagram</a>
-          <a href="#" aria-disabled="true">YouTube</a>
-          <a href="#" aria-disabled="true">Facebook</a>
-        </div>
       </div>
 
       <div class="footer-links" aria-label="Footer links">
