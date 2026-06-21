@@ -1,4 +1,4 @@
-name: Add Compliance Contact Info
+name: Add Footer Contact Info
 
 on:
   push:
@@ -10,57 +10,40 @@ permissions:
   contents: write
 
 jobs:
-  add-contact-info:
+  add-footer-contact-info:
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Add public business contact info to website footer
+      - name: Add footer contact info
         run: |
           python3 <<'PY'
           from pathlib import Path
-          import re
-
-          contact_block = '''      <div class="footer-contact" aria-label="Business contact information" style="color: #D1D5DB; font-size: 0.9rem; line-height: 1.55;">
+          contact = '''      <div class="footer-contact" aria-label="Business contact information" style="color: #D1D5DB; font-size: 0.9rem; line-height: 1.55;">
         <p style="margin: 0 0 4px;"><strong style="color: #FFFFFF;">MarketWon LLC</strong></p>
         <p style="margin: 0 0 4px;">McKinney, TX 75071</p>
-        <p style="margin: 0;"><a href="mailto:contact@marketwonagency.com" style="color: #D1D5DB; text-decoration: none; font-weight: 800;">contact@marketwonagency.com</a> · <a href="tel:+14696172237" style="color: #D1D5DB; text-decoration: none; font-weight: 800;">(469) 617-2237</a></p>
-      </div>'''
-
+        <p style="margin: 0;">contact@marketwonagency.com · (469) 617-2237</p>
+      </div>
+'''
+          needle = '      <div class="footer-links" aria-label="Footer links">'
           changed = []
-          pattern = re.compile(r'(      <div class="footer-copy">.*?      </div>)\n(?=      <div class="footer-links")', re.DOTALL)
-
           for path in sorted(Path('.').glob('*.html')):
-              text = path.read_text(encoding='utf-8')
-              if 'class="footer-contact"' in text:
-                  continue
-
-              updated, count = pattern.subn(r'\1\n\n' + contact_block + '\n', text, count=1)
-              if count:
-                  path.write_text(updated, encoding='utf-8')
+              html = path.read_text(encoding='utf-8')
+              if 'class="footer-contact"' not in html and needle in html:
+                  path.write_text(html.replace(needle, contact + needle, 1), encoding='utf-8')
                   changed.append(str(path))
-              else:
-                  print(f'Skipped {path}: footer pattern not found')
-
-          if changed:
-              print('Updated files: ' + ', '.join(changed))
-          else:
-              print('No contact info changes needed.')
+          print(changed)
           PY
 
-      - name: Commit updated pages
+      - name: Commit changes
         run: |
           if git diff --quiet; then
-            echo "No HTML changes needed."
+            echo "No changes."
             exit 0
           fi
-
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git rm .github/workflows/enlarge-site-logo-again.yml
-          git rm .trigger-contact-update || true
           git add *.html
-          git commit -m "Add public business contact info"
+          git commit -m "Add footer contact information"
           git push
