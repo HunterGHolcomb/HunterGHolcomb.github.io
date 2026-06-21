@@ -1,4 +1,4 @@
-name: Enlarge Site Logo Again
+name: Add Compliance Contact Info
 
 on:
   push:
@@ -10,40 +10,44 @@ permissions:
   contents: write
 
 jobs:
-  enlarge-logo-again:
+  add-contact-info:
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Increase top-left logo size a little more
+      - name: Add public business contact info to website footer
         run: |
           python3 <<'PY'
           from pathlib import Path
+          import re
 
-          replacements = {
-              "width: 230px;\n      max-height: 70px;": "width: 270px;\n      max-height: 82px;",
-              "width: 230px; max-height: 70px;": "width: 270px; max-height: 82px;",
-              "width: 205px;\n         max-height: 62px;": "width: 235px;\n         max-height: 72px;",
-              "width: 205px; max-height: 62px;": "width: 235px; max-height: 72px;",
-          }
+          contact_block = '''      <div class="footer-contact" aria-label="Business contact information" style="color: #D1D5DB; font-size: 0.9rem; line-height: 1.55;">
+        <p style="margin: 0 0 4px;"><strong style="color: #FFFFFF;">MarketWon LLC</strong></p>
+        <p style="margin: 0 0 4px;">McKinney, TX 75071</p>
+        <p style="margin: 0;"><a href="mailto:contact@marketwonagency.com" style="color: #D1D5DB; text-decoration: none; font-weight: 800;">contact@marketwonagency.com</a> · <a href="tel:+14696172237" style="color: #D1D5DB; text-decoration: none; font-weight: 800;">(469) 617-2237</a></p>
+      </div>'''
 
           changed = []
+          pattern = re.compile(r'(      <div class="footer-copy">.*?      </div>)\n(?=      <div class="footer-links")', re.DOTALL)
+
           for path in sorted(Path('.').glob('*.html')):
               text = path.read_text(encoding='utf-8')
-              updated = text
-              for old, new in replacements.items():
-                  updated = updated.replace(old, new)
+              if 'class="footer-contact"' in text:
+                  continue
 
-              if updated != text:
+              updated, count = pattern.subn(r'\1\n\n' + contact_block + '\n', text, count=1)
+              if count:
                   path.write_text(updated, encoding='utf-8')
                   changed.append(str(path))
+              else:
+                  print(f'Skipped {path}: footer pattern not found')
 
           if changed:
               print('Updated files: ' + ', '.join(changed))
           else:
-              print('No logo size changes needed.')
+              print('No contact info changes needed.')
           PY
 
       - name: Commit updated pages
@@ -57,5 +61,5 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git rm .github/workflows/enlarge-site-logo-again.yml
           git add *.html
-          git commit -m "Increase header logo size again"
+          git commit -m "Add public business contact info"
           git push
