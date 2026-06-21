@@ -1,0 +1,61 @@
+name: Enlarge Site Logo Again
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  enlarge-logo-again:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Increase top-left logo size a little more
+        run: |
+          python3 <<'PY'
+          from pathlib import Path
+
+          replacements = {
+              "width: 230px;\n      max-height: 70px;": "width: 270px;\n      max-height: 82px;",
+              "width: 230px; max-height: 70px;": "width: 270px; max-height: 82px;",
+              "width: 205px;\n         max-height: 62px;": "width: 235px;\n         max-height: 72px;",
+              "width: 205px; max-height: 62px;": "width: 235px; max-height: 72px;",
+          }
+
+          changed = []
+          for path in sorted(Path('.').glob('*.html')):
+              text = path.read_text(encoding='utf-8')
+              updated = text
+              for old, new in replacements.items():
+                  updated = updated.replace(old, new)
+
+              if updated != text:
+                  path.write_text(updated, encoding='utf-8')
+                  changed.append(str(path))
+
+          if changed:
+              print('Updated files: ' + ', '.join(changed))
+          else:
+              print('No logo size changes needed.')
+          PY
+
+      - name: Commit updated pages
+        run: |
+          if git diff --quiet; then
+            echo "No HTML changes needed."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm .github/workflows/enlarge-site-logo-again.yml
+          git add *.html
+          git commit -m "Increase header logo size again"
+          git push
