@@ -1,4 +1,4 @@
-name: Apply Footer Contact
+name: Apply Footer Contact and Chat Widget Compliance
 
 on:
   push:
@@ -17,27 +17,56 @@ jobs:
       - run: |
           python3 <<'PY'
           from pathlib import Path
+          import re
+
           email = 'contact' + '@' + 'marketwonagency.com'
           phone = '(' + '469' + ') ' + '617' + '-' + '2237'
-          block = f'''      <div class="footer-contact" aria-label="Business contact information" style="color: #D1D5DB; font-size: 0.9rem; line-height: 1.55;">
+
+          footer_block = f'''      <div class="footer-contact" aria-label="Business contact information" style="color: #D1D5DB; font-size: 0.9rem; line-height: 1.55;">
         <p style="margin: 0 0 4px;"><strong style="color: #FFFFFF;">MarketWon LLC</strong></p>
         <p style="margin: 0 0 4px;">McKinney, TX 75071</p>
         <p style="margin: 0;">{email} · {phone}</p>
       </div>
 '''
-          marker = '      <div class="footer-links" aria-label="Footer links">'
+          footer_marker = '      <div class="footer-links" aria-label="Footer links">'
+
+          widget_script = '<script src="https://widgets.leadconnectorhq.com/loader.js" data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a38561ccab3f1c171444ecc" data-source="WEB_USER"></script>'
+          widget_pattern = re.compile(
+              r'\s*<script\s+src="https://widgets\.leadconnectorhq\.com/loader\.js"\s+'
+              r'data-resources-url="https://widgets\.leadconnectorhq\.com/chat-widget/loader\.js"\s+'
+              r'data-widget-id="6a38561ccab3f1c171444ecc"\s+'
+              r'data-source="WEB_USER"></script>\s*',
+              re.IGNORECASE
+          )
+
           changed = []
-          for p in Path('.').glob('*.html'):
-              s = p.read_text()
-              if 'footer-contact' not in s and marker in s:
-                  p.write_text(s.replace(marker, block + marker, 1))
-                  changed.append(str(p))
-          print(changed)
+          for path in Path('.').glob('*.html'):
+              original = path.read_text(encoding='utf-8')
+              html = original
+
+              if 'footer-contact' not in html and footer_marker in html:
+                  html = html.replace(footer_marker, footer_block + footer_marker, 1)
+
+              html = widget_pattern.sub('\n', html)
+
+              # GHL compliance scanners can miss scripts at the very bottom of the body.
+              # Keep the chat widget only on the homepage and place it in <head>.
+              if path.name == 'index.html' and '</head>' in html:
+                  html = html.replace('</head>', f'  {widget_script}\n</head>', 1)
+
+              # Light cleanup only around closing tags after removing old script placement.
+              html = re.sub(r'\n{3,}(</body>)', r'\n\1', html)
+
+              if html != original:
+                  path.write_text(html, encoding='utf-8')
+                  changed.append(str(path))
+
+          print('Updated files:', changed)
           PY
       - run: |
           if git diff --quiet; then exit 0; fi
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git add *.html
-          git commit -m "Add footer contact information"
+          git commit -m "Fix chat widget compliance placement"
           git push
