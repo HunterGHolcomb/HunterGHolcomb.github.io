@@ -60,6 +60,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git rm .github/workflows/enlarge-site-logo-again.yml
+          git rm .trigger-contact-update || true
           git add *.html
           git commit -m "Add public business contact info"
           git push
