@@ -1,0 +1,43 @@
+name: Apply Footer Contact
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          python3 <<'PY'
+          from pathlib import Path
+          email = 'contact' + '@' + 'marketwonagency.com'
+          phone = '(' + '469' + ') ' + '617' + '-' + '2237'
+          block = f'''      <div class="footer-contact" aria-label="Business contact information" style="color: #D1D5DB; font-size: 0.9rem; line-height: 1.55;">
+        <p style="margin: 0 0 4px;"><strong style="color: #FFFFFF;">MarketWon LLC</strong></p>
+        <p style="margin: 0 0 4px;">McKinney, TX 75071</p>
+        <p style="margin: 0;">{email} · {phone}</p>
+      </div>
+'''
+          marker = '      <div class="footer-links" aria-label="Footer links">'
+          changed = []
+          for p in Path('.').glob('*.html'):
+              s = p.read_text()
+              if 'footer-contact' not in s and marker in s:
+                  p.write_text(s.replace(marker, block + marker, 1))
+                  changed.append(str(p))
+          print(changed)
+          PY
+      - run: |
+          if git diff --quiet; then exit 0; fi
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add *.html
+          git commit -m "Add footer contact information"
+          git push
